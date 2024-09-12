@@ -1,0 +1,97 @@
+@media (prefers-color-scheme: light) {
+	:root {
+		--clr-text-main: #4b4b4b;
+		--clr-text-light: #918e9b;
+
+		--clr-background-light: #f5f7fb;
+
+		--clr-btn-default: #4d5b9e;
+		--clr-btn-select: #d6dbf5;
+		--clr-btn-correct: #94d7a2;
+		--clr-btn-wrong: #f8bcbc;
+	}
+}
+
+/* Dark Mode */
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--clr-text-main: #888;
+		--clr-text-light: #e5e5e5;
+		--clr-text-correct: #1b365c;
+
+		--clr-background-light: #f5f7fb;
+
+		--clr-btn-default: #4d5b9e;
+		--clr-btn-select: #d6dbf5;
+		--clr-btn-correct: #94d7a2;
+		--clr-btn-wrong: #f8bcbc;
+	}
+}
+
+.multiple-options {
+	display: flex;
+	justify-content: space-around;
+}
+
+input[type="radio"][name="question"] {
+	display: none;
+}
+
+label {
+	display: inline-block;
+	padding: 0.2em 2em;
+	margin: 0 0.3em;
+	color: var(--clr-text-main);
+	border: 0.79px solid var(--clr-btn-default);
+	border-radius: 7.94px;
+	-webkit-border-radius: 7.94px;
+	-moz-border-radius: 7.94px;
+	-ms-border-radius: 7.94px;
+	-o-border-radius: 7.94px;
+	background: var(--clr-background-light);
+	cursor: pointer;
+	transition: border-color 0.25s;
+	text-align: center;
+}
+
+/* Clicking a label will select its corresponding hidden radio button
+   We can select that radio buttons sibling label and style it. */
+input[type="radio"]:checked + label {
+	background: var(--clr-btn-select);
+}
+
+label:hover,
+input[type="radio"]:checked + label:hover {
+	color: var(--clr-text-light);
+	background: var(--clr-btn-default);
+}
+
+.correct {
+	color: var(--clr-text-correct);
+	background: var(--clr-btn-correct);
+}
+
+.wrong {
+	background: var(--clr-btn-wrong);
+}
+
+hr {
+	margin-top: 2em;
+}
+.final-div {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.final-result {
+	padding: 0 2em;
+}
+
+.play-again {
+	background: var(--clr-btn-default);
+	height: 3em;
+}
