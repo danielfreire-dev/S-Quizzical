@@ -12,8 +12,6 @@
 	}
 }
 
-/* Dark Mode */
-
 @media (prefers-color-scheme: dark) {
 	:root {
 		--clr-text-main: #888;

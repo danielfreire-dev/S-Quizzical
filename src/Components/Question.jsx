@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+/* eslint-disable react/prop-types */
+
+/* import { useEffect, useState } from "react"; */
 
 export default function Questions(props) {
 	let qi = 0;
@@ -6,12 +8,12 @@ export default function Questions(props) {
 
 	console.log("render");
 
-	const answersList = props.answers.map(
+	/* const answersList = props.answers.map(
 		<div>
 			<input type="radio" name="question" value={qi} id="q1o3" />
 			<label htmlFor="q1o3">OPTION J=3</label>
 		</div>,
-	);
+	); */
 
 	return (
 		<>
@@ -28,7 +30,8 @@ export default function Questions(props) {
 			<label htmlFor="q1o0" className="correct">
 				OPTION J=0
 			</label> */}
-			{answersList}
+
+			{/* {answersList} */}
 
 			<input
 				type="radio"

@@ -1,15 +1,79 @@
-export default function Home(props) {
+/* eslint-disable react/prop-types */
+
+import Options from "./Options";
+
+export default function Home(props, { children }) {
 	return (
 		<>
 			<h1>Quizzical</h1>
 			<p className="intro-text">This app will quizz your trivia knowledge</p>
 			<p className="intro-text">Are you ready?</p>
-			<div className="multiple-options">
-				<h3 className="select-category">Category:</h3>
-				<select name="" id="">
-					<option value="">Random</option>
-					<option value="">Not so Random</option>
-					<option value="">Definitely not Random</option>
+			<div className="div-options">
+				<label htmlFor="category-select" className="quizz-label ">
+					Category:
+				</label>
+				<select name="categories" id="category-select">
+					<option value="">Any Category</option>
+					<option value="9">General Knowledge</option>
+					<option value="10">Entertainment: Books</option>
+					<option value="11">Entertainment: Film</option>
+					<option value="12">Entertainment: Music</option>
+					<option value="13">Entertainment: Musicals &amp; Theatres</option>
+					<option value="14">Entertainment: Television</option>
+					<option value="15">Entertainment: Video Games</option>
+					<option value="16">Entertainment: Board Games</option>
+					<option value="17">Science &amp; Nature</option>
+					<option value="18">Science: Computers</option>
+					<option value="19">Science: Mathematics</option>
+					<option value="20">Mythology</option>
+					<option value="21">Sports</option>
+					<option value="22">Geography</option>
+					<option value="23">History</option>
+					<option value="24">Politics</option>
+					<option value="25">Art</option>
+					<option value="26">Celebrities</option>
+					<option value="27">Animals</option>
+					<option value="28">Vehicles</option>
+					<option value="29">Entertainment: Comics</option>
+					<option value="30">Science: Gadgets</option>
+					<option value="31">Entertainment: Japanese Anime &amp; Manga</option>
+					<option value="32">Entertainment: Cartoon &amp; Animations</option>
+				</select>
+			</div>
+			<div className="div-options">
+				<label htmlFor="difficulty-select" className="quizz-label">
+					Difficulty:
+				</label>
+				<select name="difficulty" id="difficulty-select">
+					<option className="quizz-options" value="any-diff">
+						Any difficulty
+					</option>
+					<option className="quizz-options" value="easy">
+						Easy
+					</option>
+					<option className="quizz-options" value="medium">
+						Medium
+					</option>
+					<option className="quizz-options" value="hard">
+						Hard
+					</option>
+				</select>
+			</div>
+			<div className="div-options">
+				<label htmlFor="type-select" className="quizz-label">
+					Type of questions:
+				</label>
+				<select name="type-of-questions" id="type-select">
+					<option className="quizz-options" value="any-type">
+						Any type
+					</option>
+					<option className="quizz-options" value="multiple">
+						Multipe options
+					</option>
+					<option className="quizz-options" value="binary">
+						{" "}
+						True / False
+					</option>
 				</select>
 			</div>
 			<button type="button" className="start" onClick={props.startQuiz}>
