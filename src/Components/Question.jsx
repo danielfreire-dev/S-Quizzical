@@ -1,21 +1,15 @@
 /* eslint-disable react/prop-types */
 
+import Answers from "./Answers";
+
 /* import { useEffect, useState } from "react"; */
 
 export default function Questions(props) {
-	/* const answersList = props.answers.map(
-		<div>
-			<input type="radio" name="question" value={qi} id="q1o3" />
-			<label htmlFor="q1o3">OPTION J=3</label>
-		</div>,
-	); */
-
 	return (
-		<>
-			<pre>{props.json}</pre>
-
+		<div className="question-div">
 			<h2 className="question">{props.question}</h2>
 			<hr />
-		</>
+			{/* <Answers /> */}
+		</div>
 	);
 }

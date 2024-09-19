@@ -3,10 +3,7 @@
 export default function Home(props) {
 	return (
 		<>
-			<h1>Quizzical</h1>
-			<p className="intro-text">This app will quizz your trivia knowledge</p>
-			<p className="intro-text">Are you ready?</p>
-			<form action="post" onSubmit={props.startQuiz}>
+			<form onSubmit={props.startQuiz}>
 				<div className="div-options">
 					<label htmlFor="amountQuestions">Number of Questions: </label>
 					<input
@@ -89,6 +86,7 @@ export default function Home(props) {
 					Start quiz
 				</button>
 			</form>
+			<pre>{props.json}</pre>
 		</>
 	);
 }
