@@ -72,8 +72,6 @@ function App() {
 		/* return quizzSettings; */
 	}
 
-	/* console.log(quizzData.results[0].category); */
-
 	/* console.log(quizzData);*/
 	/* console.log(quizzData.results); */
 
@@ -83,12 +81,13 @@ function App() {
 			? quizzData.results.map((item) => {
 					return (
 						<div key={nanoid()} className="question-div">
-							<Questions key={nanoid()} question={item.question} />
-							<Answers
+							<Questions
 								key={nanoid()}
+								question={item.question}
 								incorrect_answers={item.incorrect_answers}
 								correct_answer={item.correct_answer}
 							/>
+
 							<hr />
 						</div>
 					);
