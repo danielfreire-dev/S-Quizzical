@@ -86,7 +86,7 @@ export default function Home(props) {
 					Start quiz
 				</button>
 			</form>
-			<pre>{props.json}</pre>
+			{/* <pre>{props.json}</pre> */}
 		</>
 	);
 }

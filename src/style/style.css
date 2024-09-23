@@ -32,7 +32,7 @@
 	justify-content: space-around;
 }
 
-input[type="radio"][name="question"] {
+input[type="radio"].radio-answer {
 	display: none;
 }
 
@@ -92,4 +92,11 @@ hr {
 .play-again {
 	background: var(--clr-btn-default);
 	height: 3em;
+}
+.category {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 13px;
 }

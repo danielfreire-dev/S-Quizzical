@@ -14,7 +14,7 @@ import { Header } from "./Components/Header";
 /* https://www.figma.com/design/E9S5iPcm10f0RIHK8mCqKL/Quizzical-App?node-id=0-1&node-type=canvas&t=qocSgDNnSXpzHIGr-0 */
 
 function App() {
-	const [quizzStarted, setQuizzStarted] = useState(false);
+	const [quizzStarted, setQuizzStarted] = useState(true);
 	const [quizzData, setQuizzData] = useState({});
 	const [quizzSettings, setQuizzSettings] = useState({
 		amountQuestions: "5",
@@ -22,8 +22,7 @@ function App() {
 		difficulty: "any-diff",
 		questionType: "any-type",
 	});
-	const [quizzQuestions, setQuizzQuestions] = useState([]);
-	const [quizzAnswers, setQuizzAnswers] = useState([]);
+	const [correctCount, setCorrectCount] = useState(0);
 
 	/* Creating the API link */
 	let amountQuestions = "amount=" + quizzSettings.amountQuestions || "amount=5";
@@ -72,13 +71,13 @@ function App() {
 		/* return quizzSettings; */
 	}
 
-	/* console.log(quizzData);*/
-	/* console.log(quizzData.results); */
+	console.log(quizzData.results);
 
 	/* Maps Section */
 	const questionsElement =
 		quizzData.response_code === 0
-			? quizzData.results.map((item) => {
+			? /* Maps per question */
+			  quizzData.results.map((item) => {
 					return (
 						<div key={nanoid()} className="question-div">
 							<Questions
@@ -86,6 +85,7 @@ function App() {
 								question={item.question}
 								incorrect_answers={item.incorrect_answers}
 								correct_answer={item.correct_answer}
+								category={item.category}
 							/>
 
 							<hr />
@@ -99,23 +99,22 @@ function App() {
 			<Header />
 			{quizzData.response_code === 0 ? (
 				<div>
-					{/* {quizzStarted ? (
-				<QuestionList />
-			) : (
-				<Home startQuiz={() => setQuizzStarted(!quizzStarted)} />
-			)} */}
+					{quizzStarted ? (
+						<>
+							<hr />
+							{quizzData && questionsElement}
 
-					<Home
-						startQuiz={setQuizz}
-						json={JSON.stringify(quizzData, null, 2)}
-					/>
-					<hr />
-					{quizzData && questionsElement}
-
-					<Counter
-						correctAnswers={1}
-						amountQuestions={amountQuestions.split("=").pop()}
-					/>
+							<Counter
+								correctAnswers={correctCount}
+								amountQuestions={amountQuestions.split("=").pop()}
+							/>
+						</>
+					) : (
+						<Home
+							startQuiz={setQuizz}
+							json={JSON.stringify(quizzData, null, 2)}
+						/>
+					)}
 				</div>
 			) : (
 				<div>
