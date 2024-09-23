@@ -9,6 +9,7 @@ import { nanoid } from "nanoid";
 import "./App.css";
 import "./style/style.css";
 import { Header } from "./Components/Header";
+import Quizz from "./Components/Quizz";
 
 /* Figma Draft */
 /* https://www.figma.com/design/E9S5iPcm10f0RIHK8mCqKL/Quizzical-App?node-id=0-1&node-type=canvas&t=qocSgDNnSXpzHIGr-0 */
@@ -22,7 +23,6 @@ function App() {
 		difficulty: "any-diff",
 		questionType: "any-type",
 	});
-	const [correctCount, setCorrectCount] = useState(0);
 
 	/* Creating the API link */
 	let amountQuestions = "amount=" + quizzSettings.amountQuestions || "amount=5";
@@ -73,26 +73,9 @@ function App() {
 
 	console.log(quizzData.results);
 
-	/* Maps Section */
-	const questionsElement =
-		quizzData.response_code === 0
-			? /* Maps per question */
-			  quizzData.results.map((item) => {
-					return (
-						<div key={nanoid()} className="question-div">
-							<Questions
-								key={nanoid()}
-								question={item.question}
-								incorrect_answers={item.incorrect_answers}
-								correct_answer={item.correct_answer}
-								category={item.category}
-							/>
+	function submitQuizz() {}
 
-							<hr />
-						</div>
-					);
-			  })
-			: "";
+	/* Maps Section */
 
 	return (
 		<>
@@ -102,12 +85,13 @@ function App() {
 					{quizzStarted ? (
 						<>
 							<hr />
-							{quizzData && questionsElement}
 
-							<Counter
-								correctAnswers={correctCount}
-								amountQuestions={amountQuestions.split("=").pop()}
-							/>
+							{quizzData && (
+								<Quizz
+									quizzData={quizzData}
+									amountQuestions={amountQuestions}
+								/>
+							)}
 						</>
 					) : (
 						<Home

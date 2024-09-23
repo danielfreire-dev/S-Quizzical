@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
 	Education,
 	Book,
@@ -13,16 +14,15 @@ import {
 	Worship,
 	Cyclist,
 	Monument,
-	AirlinePassengerCare,
 	ColorPalette,
 	UserCertification,
-	UserFavorite,
 	DogWalker,
 	Bullhorn,
 	Car,
 	Notebook,
 	Tools,
 	BastionHost,
+	Demo,
 } from "@carbon/icons-react";
 
 export default function Categories(props) {

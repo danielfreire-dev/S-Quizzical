@@ -10,8 +10,11 @@ export default function Home(props) {
 						type="number"
 						name="amountQuestions"
 						defaultValue={"5"}
+						max={50}
+						min={1}
 						id="amountQuestions"
 					/>
+					<small>Maximum questions: 50</small>
 				</div>
 				<div className="div-options">
 					<label htmlFor="category-select" className="quizz-label ">

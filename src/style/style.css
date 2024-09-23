@@ -97,6 +97,12 @@ hr {
 	display: flex;
 	flex-wrap: nowrap;
 	align-items: center;
-	justify-content: flex-start;
+	justify-content: right;
 	gap: 13px;
+}
+
+.question-container {
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+	justify-items: left;
 }

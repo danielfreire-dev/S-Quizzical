@@ -25,13 +25,14 @@ export default function Questions(props) {
 		category: categoryd,
 		correctAnswer: correct,
 		answers: shuffledAnswers,
+		selectedAnswer: "",
 		isCorrect: false,
 	});
 
-	console.log(answerState.categoryd);
-	console.log(answerState.correct);
-	console.log(answerState.shuffledAnswers);
-	console.log(answerState.answerState);
+	console.log(answerState.category);
+	console.log(answerState.correctAnswer);
+	console.log(answerState.answers);
+	console.log(answerState);
 
 	/* Maps per answer */
 	const answerElements = answerState.answers.map((answer) => (
