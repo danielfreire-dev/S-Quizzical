@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
+import { nanoid } from "nanoid";
 
 import Home from "./Components/Home";
-import Questions from "./Components/Question";
+/* import Questions from "./Components/Question";
 import Answers from "./Components/Answers";
-import Counter from "./Components/AnswersCounter";
-import { nanoid } from "nanoid";
+import Counter from "./Components/AnswersCounter"; */
+import { Header } from "./Components/Header";
+import Quizz from "./Components/Quizz";
 
 import "./App.css";
 import "./style/style.css";
-import { Header } from "./Components/Header";
-import Quizz from "./Components/Quizz";
 
 /* Figma Draft */
 /* https://www.figma.com/design/E9S5iPcm10f0RIHK8mCqKL/Quizzical-App?node-id=0-1&node-type=canvas&t=qocSgDNnSXpzHIGr-0 */
@@ -18,8 +18,8 @@ function App() {
 	const [quizzStarted, setQuizzStarted] = useState(true);
 	const [quizzData, setQuizzData] = useState({});
 	const [quizzSettings, setQuizzSettings] = useState({
-		amountQuestions: "5",
-		category: "0",
+		amountQuestions: 2,
+		category: 0,
 		difficulty: "any-diff",
 		questionType: "any-type",
 	});
@@ -73,9 +73,7 @@ function App() {
 
 	console.log(quizzData.results);
 
-	function submitQuizz() {}
-
-	/* Maps Section */
+	/* Timeout message to be tested */
 
 	return (
 		<>
@@ -90,6 +88,7 @@ function App() {
 								<Quizz
 									quizzData={quizzData}
 									amountQuestions={amountQuestions}
+									setQuizz={setQuizz}
 								/>
 							)}
 						</>
@@ -102,7 +101,9 @@ function App() {
 				</div>
 			) : (
 				<div>
-					<p>Server not working. Try again</p>
+					{setTimeout(() => {
+						<p>Server not working. Try again</p>;
+					}, 3500)}
 				</div>
 			)}
 		</>

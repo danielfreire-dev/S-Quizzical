@@ -6,7 +6,7 @@
 		--clr-background-light: #f5f7fb;
 
 		--clr-btn-default: #4d5b9e;
-		--clr-btn-select: #d6dbf5;
+		--clr-btn-select: #539ef3;
 		--clr-btn-correct: #94d7a2;
 		--clr-btn-wrong: #f8bcbc;
 	}
@@ -21,7 +21,7 @@
 		--clr-background-light: #f5f7fb;
 
 		--clr-btn-default: #4d5b9e;
-		--clr-btn-select: #d6dbf5;
+		--clr-btn-select: #1581fc;
 		--clr-btn-correct: #94d7a2;
 		--clr-btn-wrong: #f8bcbc;
 	}
@@ -93,16 +93,20 @@ hr {
 	background: var(--clr-btn-default);
 	height: 3em;
 }
-.category {
-	display: flex;
-	flex-wrap: nowrap;
-	align-items: center;
-	justify-content: right;
-	gap: 13px;
-}
 
 .question-container {
 	display: grid;
 	grid-template-columns: 3fr 1fr;
-	justify-items: left;
+
+	text-align: start;
+}
+
+.category {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: flex-end;
+	justify-items: end;
+	text-align: end;
+	gap: 13px;
 }

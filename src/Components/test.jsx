@@ -22,3 +22,42 @@ function createAnswersArray(quizzData) {
 	}
 	/* return answersArray; */
 }
+
+function handleQuizzSubmit(e) {
+	e.preventDefault();
+	console.log(e.target);
+
+	// Extract user answers from the form (implementation depends on your form structure)
+	/* const userAnswers =  */ /* logic to get user answers */ // Evaluate user answers and update correct count
+	let updatedCorrectCount = 0;
+	for (let i = 0; i < quizzData.results.length; i++) {
+		if (userAnswers[i] === quizzData.results[i].correct_answer) {
+			updatedCorrectCount++;
+		}
+	}
+	setCorrectCount(updatedCorrectCount);
+
+	// Set quiz submitted to true
+	setQuizzSubmited(true);
+}
+
+const { name, value, type, checked } = event.target;
+setFormData((prevFormData) => {
+	return {
+		...prevFormData,
+		[name]: type === "checkbox" ? checked : value,
+	};
+});
+let quizzDisplayData = {
+	question: "",
+	answers: [
+		{
+			answer: "",
+			correct: false,
+			checked: false,
+			selected: false,
+		},
+	],
+	category: "",
+	difficulty: "",
+};
