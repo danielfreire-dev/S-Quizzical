@@ -1,127 +1,96 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import { nanoid } from "nanoid/non-secure";
 import { decode } from "html-entities";
-/* import Questions from "./Question"; */
+import Questions from "./Question";
 import Counter from "./AnswersCounter";
 
 export default function Quizz(props) {
 	const [correctCount, setCorrectCount] = useState(0);
 	const [quizzSubmited, setQuizzSubmited] = useState(false);
-	const [quizzDisplay, setQuizzDisplay] = useState();
+	const [processedData, setProcessedData] = useState([]);
+	const [selectedAnswers, setSelectedAnswers] = useState({}); // Object to store selected answers
 
-	const { quizzData, amountQuestions, setQuizz, correct_answer } = props;
+	const { quizzData, amountQuestions, setQuizz } = props;
 
-	let quizzDisplayArray = [];
+	console.log(quizzData);
 
-	let quizz = quizzData.results.map((item) => {
-		let questiond = decode(item.question);
-		let correct = decode(item.correct_answer);
-		let incorrect = decode(item.incorrect_answers);
-		let categoryd = decode(item.category);
+	function processQuizzData(data) {
+		const processedQuestions = data.results.map((item) => {
+			const questiond = decode(item.question);
+			const correct = decode(item.correct_answer);
+			const incorrect = decode(item.incorrect_answers);
 
-		let answers = [...incorrect];
-		answers.splice(
-			Math.floor(Math.random() * incorrect.length + 1),
-			0,
-			correct,
-		);
-		console.log(answers);
+			const answers = [...incorrect];
+			answers.splice(
+				Math.floor(Math.random() * incorrect.length + 1),
+				0,
+				correct,
+			);
 
-		let object = {
-			question: questiond,
-			answers: [],
-			category: categoryd,
-			difficulty: item.difficulty,
-		};
-		answers.map((answer) => {
-			let answersObj = { answer: answer, correct: false, checked: false };
-
-			if (answer === correct) {
-				answersObj.correct = true;
-			}
-
-			object.answers.push(answersObj);
-		});
-
-		console.log(object);
-
-		quizzDisplayArray.push(object);
-	});
-
-	console.log(quizzDisplayArray);
-	setQuizzDisplay(quizzDisplayArray);
-
-	/* console.log(quizzDisplay); */
-	/* console.log(quizzDisplayData); */
-
-	function handleQuizzChange(e) {
-		e.preventDefault();
-		const { name, value, type, checked } = e.target;
-		console.log(e.target);
-		console.log(name);
-		console.log(value);
-
-		setSelectedAnswer((prevSelected) => {
 			return {
-				...prevSelected,
-				[name]: value,
+				question: questiond,
+				category: decode(item.category),
+				difficulty: item.difficulty,
+				answers: answers.map((answer) => ({
+					answer,
+					correct: answer === correct,
+					checked: selectedAnswers[questiond] === answer || false, // Set based on user selection
+				})),
 			};
 		});
 
-		console.log(checked);
+		setProcessedData(processedQuestions);
 	}
 
-	/* console.log(selectedAnswer); */
-	/* console.log(Object.values(selectedAnswer)); */
+	useEffect(() => {
+		if (quizzData) {
+			processQuizzData(quizzData);
+		}
+	}, [quizzData]); // Run only when quizzData changes
+
+	function handleQuizzChange(question, answer) {
+		setSelectedAnswers({ ...selectedAnswers, [question]: answer });
+	}
 
 	function handleQuizzSubmit(e) {
 		e.preventDefault();
-		let keyNames = Object.keys(selectedAnswer);
-		console.log(keyNames);
+		let userScore = 0;
 
-		if (
-			questiond === Object.keys(selectedAnswer) &&
-			correct === Object.values(selectedAnswer)
-		) {
-			setQuizzSubmited(true);
-			setSelectedAnswer([]);
-			setCorrectCount((prevCount) => prevCount++);
-			console.log(correctCount);
-			return;
-		}
+		processedData.forEach((question) => {
+			const selectedAnswer = selectedAnswers[question.question];
+			if (selectedAnswer && selectedAnswer === question.correct_answer) {
+				userScore++;
+			}
+		});
 
-		/* setQuizzSubmited(!quizzSubmited); */
+		setCorrectCount(userScore);
+		setQuizzSubmited(true);
 	}
 
-	/* const questionsElement =
-		quizzData.response_code === 0
-			?
-			  quizzData.results.map((item) => {
-					return (
-						<div key={nanoid()} className="question-div">
-							<Questions
-								key={nanoid()}
-								question={item.question}
-								incorrect_answers={item.incorrect_answers}
-								correct_answer={item.correct_answer}
-								category={item.category}
-								difficulty={item.difficulty}
-								handleQuizzChange={handleQuizzChange}
-								selectedAnswer={selectedAnswer}
-							/>
+	const questionsElement = processedData.map((item) => (
+		<div key={nanoid()} className="question-div">
+			<Questions
+				key={nanoid()}
+				quizzDisplayArray={item}
+				question={item.question}
+				answers={item.answers}
+				category={item.category}
+				difficulty={item.difficulty}
+				handleQuizzChange={handleQuizzChange}
+				selectedAnswer={selectedAnswers[item.question] || ""} // Pass selected answer if available
+			/>
 
-							<hr />
-						</div>
-					);
-			  })
-			: ""; */
+			<hr />
+		</div>
+	));
 
 	return (
 		<>
 			{quizzSubmited ? (
-				<form onSubmit={setQuizz}>
-					{/* {questionsElement} */}
+				<form onSubmit={handleQuizzSubmit}>
+					{questionsElement}
 					<Counter
 						quizzSubmited={quizzSubmited}
 						correctAnswers={correctCount}
@@ -129,8 +98,8 @@ export default function Quizz(props) {
 					/>
 				</form>
 			) : (
-				<form onSubmit={handleQuizzSubmit}>
-					{/* {questionsElement} */}
+				<form>
+					{questionsElement}
 					<Counter
 						quizzSubmited={quizzSubmited}
 						correctAnswers={correctCount}

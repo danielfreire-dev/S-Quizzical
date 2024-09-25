@@ -71,7 +71,7 @@ function App() {
 		/* return quizzSettings; */
 	}
 
-	console.log(quizzData.results);
+	/* console.log(quizzData.results); */
 
 	/* Timeout message to be tested */
 

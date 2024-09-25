@@ -48,6 +48,7 @@ setFormData((prevFormData) => {
 		[name]: type === "checkbox" ? checked : value,
 	};
 });
+
 let quizzDisplayData = {
 	question: "",
 	answers: [
@@ -61,3 +62,26 @@ let quizzDisplayData = {
 	category: "",
 	difficulty: "",
 };
+
+<>
+	<input
+		key={nanoid()}
+		type="radio"
+		name={quizzDisplayArray.question}
+		value={answer}
+		id={answer}
+		className="radio-answer"
+	/>
+	<label key={nanoid()} htmlFor={answer}>
+		{answer}
+	</label>
+</>;
+
+setQuizzDisplay((prevDisplay) => {
+	/* console.log(prevDisplay); */
+
+	if (prevDisplay === undefined) {
+		return [...prevDisplay, quizzDisplayArray];
+	}
+	/* return [...prevDisplay, quizzDisplayArray]; */
+});

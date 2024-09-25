@@ -1,39 +1,36 @@
 /* eslint-disable react/prop-types */
 
 import { nanoid } from "nanoid";
-import { decode } from "html-entities";
+
 import { useState } from "react";
 import Categories from "./Category";
 import Difficulty from "./Difficulty";
+import Answers from "./Answers";
 
 export default function Questions(props) {
-	const { categoryd, difficulty, handleQuizzChange } = props;
+	const {
+		quizzDisplayArray,
+		question,
+		answers,
+		category,
+		difficulty,
+		handleQuizzChange,
+	} = props;
 
 	/* Maps per answer */
-	const answerElements = shuffledAnswers.map((answer) => (
-		<>
-			<input
-				key={nanoid()}
-				type="radio"
-				name={answerState.question}
-				value={answer}
-				id={answer}
-				className="radio-answer"
-				onChange={handleQuizzChange}
-				checked={answerState.checked}
-			/>
-			<label key={nanoid()} htmlFor={answer}>
-				{answer}
-			</label>
-		</>
+	console.log(quizzDisplayArray);
+	console.log(answers);
+
+	const answerElements = answers.map((answer) => (
+		<Answers key={nanoid()} question={question} answers={answer.answer} />
 	));
 
 	return (
 		<div>
 			<div className="question-container">
-				<h2 className="question">{questiond}</h2>
+				<h2 className="question">{question}</h2>
 				<Difficulty difficulty={difficulty} />
-				<Categories key={nanoid()} category={categoryd} />
+				<Categories key={nanoid()} category={category} />
 			</div>
 			{answerElements}
 		</div>
