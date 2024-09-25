@@ -12,7 +12,7 @@ export default function Quizz(props) {
 	const [processedData, setProcessedData] = useState([]);
 	const [selectedAnswers, setSelectedAnswers] = useState({}); // Object to store selected answers
 
-	const { quizzData, amountQuestions, setQuizz } = props;
+	const { quizzData, amountQuestions, quizzStarted } = props;
 
 	console.log(quizzData);
 
@@ -66,7 +66,14 @@ export default function Quizz(props) {
 		});
 
 		setCorrectCount(userScore);
-		setQuizzSubmited(true);
+		setQuizzSubmited(quizzStarted);
+		console.log(quizzSubmited);
+	}
+
+	function newQuizz() {
+		setQuizzSubmited(!quizzSubmited);
+		setCorrectCount(0);
+		setSelectedAnswers({});
 	}
 
 	const questionsElement = processedData.map((item) => (
@@ -89,7 +96,7 @@ export default function Quizz(props) {
 	return (
 		<>
 			{quizzSubmited ? (
-				<form onSubmit={handleQuizzSubmit}>
+				<form onSubmit={newQuizz}>
 					{questionsElement}
 					<Counter
 						quizzSubmited={quizzSubmited}
@@ -98,7 +105,7 @@ export default function Quizz(props) {
 					/>
 				</form>
 			) : (
-				<form>
+				<form onSubmit={handleQuizzSubmit}>
 					{questionsElement}
 					<Counter
 						quizzSubmited={quizzSubmited}

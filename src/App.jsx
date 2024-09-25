@@ -68,7 +68,6 @@ function App() {
 			difficulty: json.difficulty,
 			questionType: json.questionType,
 		});
-		/* return quizzSettings; */
 	}
 
 	/* console.log(quizzData.results); */

@@ -8,21 +8,12 @@ import Difficulty from "./Difficulty";
 import Answers from "./Answers";
 
 export default function Questions(props) {
-	const {
-		quizzDisplayArray,
-		question,
-		answers,
-		category,
-		difficulty,
-		handleQuizzChange,
-	} = props;
+	const { quizzDisplayArray, question, answers, category, difficulty } = props;
 
 	/* Maps per answer */
-	console.log(quizzDisplayArray);
-	console.log(answers);
 
-	const answerElements = answers.map((answer) => (
-		<Answers key={nanoid()} question={question} answers={answer.answer} />
+	const answerElements = answers.map((answer, index) => (
+		<Answers key={nanoid()} question={question} answer={answer.answer} />
 	));
 
 	return (
