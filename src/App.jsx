@@ -18,7 +18,7 @@ function App() {
 	const [quizzStarted, setQuizzStarted] = useState(true);
 	const [quizzData, setQuizzData] = useState({});
 	const [quizzSettings, setQuizzSettings] = useState({
-		amountQuestions: 2,
+		amountQuestions: 5,
 		category: 0,
 		difficulty: "any-diff",
 		questionType: "any-type",
@@ -100,9 +100,7 @@ function App() {
 				</div>
 			) : (
 				<div>
-					{setTimeout(() => {
-						<p>Server not working. Try again</p>;
-					}, 3500)}
+					<p> If server is not working please try refreshing.</p>
 				</div>
 			)}
 		</>

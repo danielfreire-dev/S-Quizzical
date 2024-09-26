@@ -1,10 +1,22 @@
 /* eslint-disable react/prop-types */
 
-/* import { nanoid } from "nanoid"; */
-
 export default function Answers(props) {
-	let { question, answers, answer, category, difficulty } = props;
+	let {
+		question,
+		quizzzSubmited,
+		answer,
+		handleQuizzChange,
+		correctAnswer,
+		selectedAnswer,
+	} = props;
 
+	let answerClass = "";
+	if (quizzzSubmited) {
+		if (selectedAnswer === answer) {
+			// If the selected answer is the correct one
+			answerClass = answer === correctAnswer ? "correct" : "wrong";
+		}
+	}
 	return (
 		<>
 			<input
@@ -14,7 +26,9 @@ export default function Answers(props) {
 				id={answer}
 				className="radio-answer"
 			/>
-			<label htmlFor={answer}>{answer}</label>
+			<label htmlFor={answer} className={`answer ${answerClass}`}>
+				{answer}
+			</label>
 		</>
 	);
 }

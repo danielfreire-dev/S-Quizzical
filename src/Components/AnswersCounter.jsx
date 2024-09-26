@@ -1,13 +1,7 @@
 /* eslint-disable react/prop-types */
 
 export default function Counter(props) {
-	const {
-		hasStarted,
-		correctAnswers,
-		amountQuestions,
-		handleQuizzSubmit,
-		quizzSubmited,
-	} = props;
+	const { correctAnswers, amountQuestions, quizzSubmited } = props;
 
 	/* console.log(quizzSubmited); */
 
@@ -25,7 +19,9 @@ export default function Counter(props) {
 					</div>
 				) : (
 					<div>
-						<button className="play-again">Check answers</button>
+						<button type="submit" className="play-again">
+							Check answers
+						</button>
 					</div>
 				)}
 			</>

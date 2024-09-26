@@ -68,10 +68,12 @@ input[type="radio"]:checked + label:hover {
 .correct {
 	color: var(--clr-text-correct);
 	background: var(--clr-btn-correct);
+	font-weight: bold;
 }
 
 .wrong {
 	background: var(--clr-btn-wrong);
+	text-decoration: line-through;
 }
 
 hr {
