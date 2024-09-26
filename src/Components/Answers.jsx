@@ -3,20 +3,12 @@
 export default function Answers(props) {
 	let {
 		question,
-		quizzzSubmited,
+
 		answer,
-		handleQuizzChange,
-		correctAnswer,
-		selectedAnswer,
+
+		answerClass,
 	} = props;
 
-	let answerClass = "";
-	if (quizzzSubmited) {
-		if (selectedAnswer === answer) {
-			// If the selected answer is the correct one
-			answerClass = answer === correctAnswer ? "correct" : "wrong";
-		}
-	}
 	return (
 		<>
 			<input

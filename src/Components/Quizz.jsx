@@ -34,6 +34,7 @@ export default function Quizz(props) {
 				question: questiond,
 				category: decode(item.category),
 				difficulty: item.difficulty,
+				correctAnswer: correct,
 				answers: answers.map((answer) => ({
 					answer,
 					correct: answer === correct,
@@ -104,7 +105,7 @@ export default function Quizz(props) {
 				handleQuizzChange={handleQuizzChange}
 				selectedAnswer={selectedAnswers[item.question] || ""} // Pass selected answer if available
 				quizzSubmited={quizzSubmited}
-				correctAnswer={item.correct_answer}
+				correctAnswer={item.correctAnswer}
 			/>
 
 			<hr />

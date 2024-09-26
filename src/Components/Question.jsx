@@ -32,7 +32,7 @@ export default function Questions(props) {
 				// If the selected answer is correct or wrong
 				answerClass = answer.answer === correctAnswer ? "correct" : "wrong";
 			}
-			/* console.log(answerClass); */
+			console.log(answerClass);
 		}
 
 		return (
