@@ -13,7 +13,7 @@ export default function Counter(props) {
 						<h2 className="final-result">
 							You scored {correctAnswers}/{amountQuestions} answers.
 						</h2>
-						<button type="reset" className="play-again">
+						<button type="submit" className="play-again">
 							Play again
 						</button>
 					</div>

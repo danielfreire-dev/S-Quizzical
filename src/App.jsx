@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { nanoid } from "nanoid";
 
 import Home from "./Components/Home";
 /* import Questions from "./Components/Question";
@@ -23,6 +22,8 @@ function App() {
 		difficulty: "any-diff",
 		questionType: "any-type",
 	});
+
+	console.log("quizzStarted: " + quizzStarted);
 
 	/* Creating the API link */
 	let amountQuestions = "amount=" + quizzSettings.amountQuestions || "amount=5";
@@ -52,7 +53,7 @@ function App() {
 		e.preventDefault();
 
 		/* Declares whether the quizz has started or not */
-		setQuizzStarted(!quizzStarted);
+		beginQuizz();
 
 		/* Saves input data */
 		const form = e.target;
@@ -70,7 +71,9 @@ function App() {
 		});
 	}
 
-	/* console.log(quizzData.results); */
+	function beginQuizz() {
+		setQuizzStarted(!quizzStarted);
+	}
 
 	/* Timeout message to be tested */
 
@@ -88,6 +91,7 @@ function App() {
 									quizzData={quizzData}
 									amountQuestions={amountQuestions}
 									setQuizz={setQuizz}
+									beginQuizz={beginQuizz}
 								/>
 							)}
 						</>

@@ -16,13 +16,15 @@ export default function Questions(props) {
 		quizzSubmited,
 		selectedAnswer,
 	} = props;
-	console.log(quizzSubmited);
+
+	/* console.log(quizzSubmited); */
+
 	/* Maps per answer */
 	const answerElements = answers.map((answer) => {
 		let answerClass = "";
 
-		console.log(correctAnswer);
-		console.log(selectedAnswer);
+		/* console.log(correctAnswer); */
+		/* console.log(selectedAnswer); */
 		/* console.log(answer.answer); */
 		/* console.log(answer.checked);*/
 
@@ -32,7 +34,6 @@ export default function Questions(props) {
 				// If the selected answer is correct or wrong
 				answerClass = answer.answer === correctAnswer ? "correct" : "wrong";
 			}
-			console.log(answerClass);
 		}
 
 		return (

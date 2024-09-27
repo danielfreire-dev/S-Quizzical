@@ -12,10 +12,11 @@ export default function Quizz(props) {
 	const [processedData, setProcessedData] = useState([]);
 	const [selectedAnswers, setSelectedAnswers] = useState({}); // Object to store selected answers
 
-	const { quizzData, amountQuestions } = props;
+	const { quizzData, amountQuestions, beginQuizz } = props;
 
-	console.log(selectedAnswers);
-	console.log(processedData);
+	/* console.log(selectedAnswers); */
+	/* console.log(processedData); */
+	console.log("quizzSubmited: " + quizzSubmited);
 
 	function processQuizzData(data) {
 		const processedQuestions = data.results.map((item) => {
@@ -64,8 +65,8 @@ export default function Quizz(props) {
 		const formData = new FormData(form);
 		const formJson = Object.fromEntries(formData.entries());
 		setSelectedAnswers(formJson);
-		console.log(formJson);
-		console.log(selectedAnswers);
+		/* console.log(formJson); */
+		/* console.log(selectedAnswers); */
 
 		//Check if selected answers are correct
 		processedData.forEach((question) => {
@@ -95,6 +96,7 @@ export default function Quizz(props) {
 		console.log(quizzSubmited);
 		setCorrectCount(0);
 		setSelectedAnswers({});
+		beginQuizz();
 	}
 
 	const questionsElement = processedData.map((item) => (
@@ -112,7 +114,7 @@ export default function Quizz(props) {
 		</div>
 	));
 
-	console.log(processedData);
+	/* console.log(processedData); */
 
 	return (
 		<>
