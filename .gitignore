@@ -9,7 +9,7 @@ lerna-debug.log*
 
 node_modules
 
-dist-ssr
+
 *.local
 
 # Editor directories and files
@@ -26,3 +26,4 @@ dist-ssr
 #Files
 config.js
 test.jsx
+src
