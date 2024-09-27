@@ -14,7 +14,7 @@ import "./style/style.css";
 /* https://www.figma.com/design/E9S5iPcm10f0RIHK8mCqKL/Quizzical-App?node-id=0-1&node-type=canvas&t=qocSgDNnSXpzHIGr-0 */
 
 function App() {
-	const [quizzStarted, setQuizzStarted] = useState(true);
+	const [quizzStarted, setQuizzStarted] = useState(false);
 	const [quizzData, setQuizzData] = useState({});
 	const [quizzSettings, setQuizzSettings] = useState({
 		amountQuestions: 5,
