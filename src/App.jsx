@@ -24,9 +24,9 @@ function App() {
 		questionType: "any-type",
 	});
 
-	console.log("quizzStarted: " + quizzStarted);
+	/* console.log("quizzStarted: " + quizzStarted);
 	console.log(quizzData);
-
+ */
 	/* Creating the API link */
 	let amountQuestions = "amount=" + quizzSettings.amountQuestions || "amount=5";
 	let category =

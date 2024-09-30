@@ -3,7 +3,7 @@ export default function Footer() {
 		<footer className="footer">
 			<p>
 				2024 © Made with ❓ by
-				<a href="https://danielfreire.pages.dev">Daniel Freire</a>
+				<a href="https://danielfreire.pages.dev"> Daniel Freire</a>
 			</p>
 		</footer>
 	);
