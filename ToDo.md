@@ -1,5 +1,6 @@
 _To Do List_
 
+- change fetch method
 - ~~add category level~~
 - change Project Name
 - add user theme (dark/light)
@@ -9,3 +10,7 @@ _To Do List_
 - add celebration when user gets 100% correct answers
 - ~~add new logo~~
 - beautify the quizz creation page
+- ~~add a footer~~
+- add a loading screen
+- add a quiz history page
+-

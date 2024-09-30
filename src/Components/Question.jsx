@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 
 import { nanoid } from "nanoid";
-import { useState } from "react";
 import Categories from "./Category";
 import Difficulty from "./Difficulty";
 import Answers from "./Answers";

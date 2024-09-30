@@ -1,8 +1,6 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project was created as a challenge from the Scrimba "Learning React" course.
+In this project I learned how to use `useState` to render the information as it is received by the app and `useEffect` to filter out some app behaviours.
+It was also a good opportunity to learn about the `fetch` method and how to use it to fetch data from an API.
+Also, I learned how forms work in the React world and how to extract and filter this data.

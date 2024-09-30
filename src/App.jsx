@@ -6,6 +6,7 @@ import Answers from "./Components/Answers";
 import Counter from "./Components/AnswersCounter"; */
 import { Header } from "./Components/Header";
 import Quizz from "./Components/Quizz";
+import Footer from "./Components/Footer";
 
 import "./App.css";
 import "./style/style.css";
@@ -24,6 +25,7 @@ function App() {
 	});
 
 	console.log("quizzStarted: " + quizzStarted);
+	console.log(quizzData);
 
 	/* Creating the API link */
 	let amountQuestions = "amount=" + quizzSettings.amountQuestions || "amount=5";
@@ -42,12 +44,20 @@ function App() {
 
 	useEffect(() => {
 		async function fetchAPI(linkFetch) {
-			const res = await fetch(linkFetch);
-			const data = await res.json();
-			setQuizzData(data);
+			try {
+				const res = await fetch(linkFetch);
+				if (!res.ok) {
+					throw new Error(`HTTP error! status: ${res.status}`);
+				}
+				const data = await res.json();
+				setQuizzData((prevState) => ({ ...prevState, ...data }));
+			} catch (error) {
+				console.log("There was an error fetching the API: ", error);
+			}
 		}
+
 		fetchAPI(linkFetch);
-	}, [quizzStarted]);
+	}, [quizzStarted]); // Only run this effect if quizzStarted changes
 
 	function setQuizz(e) {
 		e.preventDefault();
@@ -107,6 +117,7 @@ function App() {
 					<p> If server is not working please try refreshing.</p>
 				</div>
 			)}
+			<Footer />
 		</>
 	);
 }
