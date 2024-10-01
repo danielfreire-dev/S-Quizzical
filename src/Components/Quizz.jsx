@@ -16,13 +16,18 @@ export default function Quizz(props) {
 
 	/* console.log(selectedAnswers); */
 	/* console.log(processedData); */
-	console.log("quizzSubmited: " + quizzSubmited);
+	/* console.log("quizzSubmited: " + quizzSubmited); */
 
 	function processQuizzData(data) {
 		const processedQuestions = data.results.map((item) => {
 			const questiond = decode(item.question);
 			const correct = decode(item.correct_answer);
 			const incorrect = decode(item.incorrect_answers);
+
+			// Make answer options identical for identical answers
+			if (incorrect.filter((answer) => answer === correct).length > 1) {
+				incorrect[0] = correct;
+			}
 
 			const answers = [...incorrect];
 			answers.splice(

@@ -21,12 +21,9 @@ function App() {
 		amountQuestions: 5,
 		category: 0,
 		difficulty: "any-diff",
-		questionType: "any-type",
+		questionType: "multiple",
 	});
 
-	/* console.log("quizzStarted: " + quizzStarted);
-	console.log(quizzData);
- */
 	/* Creating the API link */
 	let amountQuestions = "amount=" + quizzSettings.amountQuestions || "amount=5";
 	let category =

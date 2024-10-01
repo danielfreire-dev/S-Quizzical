@@ -112,8 +112,3 @@ hr {
 	text-align: end;
 	gap: 13px;
 }
-
-.footer {
-	position: fixed;
-	bottom: 0;
-}

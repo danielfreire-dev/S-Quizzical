@@ -73,7 +73,7 @@ export default function Home(props) {
 					<label htmlFor="type-select" className="quizz-label">
 						Select Type:
 					</label>
-					<select name="questionType" id="questionType">
+					{/* <select name="questionType" id="questionType">
 						<option className="quizz-options" value="any-type">
 							Any type
 						</option>
@@ -83,7 +83,7 @@ export default function Home(props) {
 						<option className="quizz-options" value="boolean">
 							True / False
 						</option>
-					</select>
+					</select> */}
 				</div>
 				<button type="submit" className="start">
 					Start quiz

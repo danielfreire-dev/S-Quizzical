@@ -13,4 +13,5 @@ _To Do List_
 - ~~add a footer~~
 - add a loading screen
 - add a quiz history page
--
+- a11y
+- fix true/false
