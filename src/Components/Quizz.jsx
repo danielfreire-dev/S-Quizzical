@@ -98,7 +98,7 @@ export default function Quizz(props) {
 
 	function newQuizz() {
 		setQuizzSubmited(false);
-		console.log(quizzSubmited);
+		/* console.log(quizzSubmited); */
 		setCorrectCount(0);
 		setSelectedAnswers({});
 		beginQuizz();

@@ -5,7 +5,9 @@ export default function Home(props) {
 		<>
 			<form onSubmit={props.startQuiz}>
 				<div className="div-options">
-					<label htmlFor="amountQuestions">Number of Questions: </label>
+					<label htmlFor="amountQuestions" className="quizz-label">
+						Number of Questions:{" "}
+					</label>
 					<input
 						type="number"
 						name="amountQuestions"
@@ -69,11 +71,20 @@ export default function Home(props) {
 						</option>
 					</select>
 				</div>
-				<div className="div-options">
+
+				<button type="submit" className="start">
+					Start quiz
+				</button>
+			</form>
+		</>
+	);
+}
+{
+	/* <div className="div-options">
 					<label htmlFor="type-select" className="quizz-label">
 						Select Type:
 					</label>
-					{/* <select name="questionType" id="questionType">
+					<select name="questionType" id="questionType">
 						<option className="quizz-options" value="any-type">
 							Any type
 						</option>
@@ -83,12 +94,6 @@ export default function Home(props) {
 						<option className="quizz-options" value="boolean">
 							True / False
 						</option>
-					</select> */}
-				</div>
-				<button type="submit" className="start">
-					Start quiz
-				</button>
-			</form>
-		</>
-	);
+					</select>
+				</div> */
 }

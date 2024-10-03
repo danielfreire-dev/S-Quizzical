@@ -112,3 +112,28 @@ hr {
 	text-align: end;
 	gap: 13px;
 }
+
+#amountQuestions {
+	width: 3em;
+}
+
+#category-select {
+	width: 10em;
+}
+
+#difficulty-select {
+	width: 10em;
+}
+
+.div-options {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+.quizz-label {
+	background-color: black;
+	color: white;
+}
+.quizz-label:hover {
+	background-color: #afadad;
+	color: black;
+}
