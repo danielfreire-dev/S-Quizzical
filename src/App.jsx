@@ -40,17 +40,33 @@ function App() {
 	let linkFetch = `https://opentdb.com/api.php?${amountQuestions}${category}${difficulty}${questionType}`;
 
 	useEffect(() => {
+		const MAX_RETRIES = 3; // Set the maximum number of retries
+		const RETRY_DELAY = 1000; // Set the delay between retries in milliseconds
+
 		async function fetchAPI(linkFetch) {
-			try {
-				const res = await fetch(linkFetch);
-				if (!res.ok) {
-					throw new Error(`HTTP error! status: ${res.status}`);
+			let retries = 0;
+			while (retries < MAX_RETRIES) {
+				console.log("retries: " + retries);
+
+				try {
+					const res = await fetch(linkFetch);
+					if (!res.ok) {
+						throw new Error(`HTTP error! status: ${res.status}`);
+					}
+					const data = await res.json();
+					setQuizzData((prevState) => ({ ...prevState, ...data }));
+					return; // Return from the loop to prevent retries
+				} catch (error) {
+					console.log("There was an error fetching the API: ", error);
+					if (retries < MAX_RETRIES - 1) {
+						await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY));
+					}
+					retries++;
 				}
-				const data = await res.json();
-				setQuizzData((prevState) => ({ ...prevState, ...data }));
-			} catch (error) {
-				console.log("There was an error fetching the API: ", error);
 			}
+
+			// If all retries failed, throw a custom error
+			throw new Error(`Failed to fetch API after ${MAX_RETRIES} retries`);
 		}
 
 		fetchAPI(linkFetch);
