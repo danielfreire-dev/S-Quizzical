@@ -15,124 +15,126 @@ import "./style/style.css";
 /* https://www.figma.com/design/E9S5iPcm10f0RIHK8mCqKL/Quizzical-App?node-id=0-1&node-type=canvas&t=qocSgDNnSXpzHIGr-0 */
 
 function App() {
-	const [quizzStarted, setQuizzStarted] = useState(false);
-	const [quizzData, setQuizzData] = useState({});
-	const [quizzSettings, setQuizzSettings] = useState({
-		amountQuestions: 5,
-		category: 0,
-		difficulty: "any-diff",
-		questionType: "multiple",
-	});
+  const [quizzStarted, setQuizzStarted] = useState(false);
+  const [quizzData, setQuizzData] = useState({});
+  const [quizzSettings, setQuizzSettings] = useState({
+    amountQuestions: 5,
+    category: 0,
+    difficulty: "any-diff",
+    questionType: "multiple",
+  });
 
-	/* Creating the API link */
-	let amountQuestions = "amount=" + quizzSettings.amountQuestions || "amount=5";
-	let category =
-		quizzSettings.category === 0 ? "" : "&category=" + quizzSettings.category;
-	let difficulty =
-		quizzSettings.difficulty !== "any-diff"
-			? "&difficulty=" + quizzSettings.difficulty
-			: "";
-	let questionType =
-		quizzSettings.questionType !== "any-type"
-			? "&type=" + quizzSettings.questionType
-			: "";
+  /* Creating the API link */
+  let amountQuestions = "amount=" + quizzSettings.amountQuestions || "amount=5";
+  let category =
+    quizzSettings.category === 0 ? "" : "&category=" + quizzSettings.category;
+  let difficulty =
+    quizzSettings.difficulty !== "any-diff"
+      ? "&difficulty=" + quizzSettings.difficulty
+      : "";
+  /* Fix true/false issue */
+  /* let questionType =
+    quizzSettings.questionType !== "any-type"
+      ? "&type=" + quizzSettings.questionType
+      : null; */
 
-	let linkFetch = `https://opentdb.com/api.php?${amountQuestions}${category}${difficulty}${questionType}`;
+  // Define the API endpoint URL
+  let linkFetch = `https://opentdb.com/api.php?${amountQuestions}${category}${difficulty}&type=multiple`;
 
-	useEffect(() => {
-		const MAX_RETRIES = 3; // Set the maximum number of retries
-		const RETRY_DELAY = 1000; // Set the delay between retries in milliseconds
+  useEffect(() => {
+    const MAX_RETRIES = 5; // Set the maximum number of retries
+    const RETRY_DELAY = 1000; // Set the delay between retries in milliseconds
 
-		async function fetchAPI(linkFetch) {
-			let retries = 0;
-			while (retries < MAX_RETRIES) {
-				console.log("retries: " + retries);
+    async function fetchAPI(linkFetch) {
+      let retries = 0;
+      while (retries < MAX_RETRIES) {
+        console.log("retries: " + retries);
 
-				try {
-					const res = await fetch(linkFetch);
-					if (!res.ok) {
-						throw new Error(`HTTP error! status: ${res.status}`);
-					}
-					const data = await res.json();
-					setQuizzData((prevState) => ({ ...prevState, ...data }));
-					return; // Return from the loop to prevent retries
-				} catch (error) {
-					console.log("There was an error fetching the API: ", error);
-					if (retries < MAX_RETRIES - 1) {
-						await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY));
-					}
-					retries++;
-				}
-			}
+        try {
+          const res = await fetch(linkFetch);
+          if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+          }
+          const data = await res.json();
+          setQuizzData((prevState) => ({ ...prevState, ...data }));
+          return; // Return from the loop to prevent retries
+        } catch (error) {
+          console.log("There was an error fetching the API: ", error);
+          if (retries <= MAX_RETRIES) {
+            await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY));
+          }
+          retries++;
+        }
+      }
 
-			// If all retries failed, throw a custom error
-			throw new Error(`Failed to fetch API after ${MAX_RETRIES} retries`);
-		}
+      // If all retries failed, throw a custom error
+      throw new Error(`Failed to fetch API after ${MAX_RETRIES} retries`);
+    }
 
-		fetchAPI(linkFetch);
-	}, [quizzStarted]); // Only run this effect if quizzStarted changes
+    fetchAPI(linkFetch);
+  }, [quizzStarted]); // Only run this effect if quizzStarted changes
 
-	function setQuizz(e) {
-		e.preventDefault();
+  function setQuizz(e) {
+    e.preventDefault();
 
-		/* Declares whether the quizz has started or not */
-		beginQuizz();
+    /* Declares whether the quizz has started or not */
+    beginQuizz();
 
-		/* Saves input data */
-		const form = e.target;
-		const formData = new FormData(form);
-		const formJson = Object.fromEntries(formData.entries());
-		handleStartForm(formJson);
-	}
+    /* Saves input data */
+    const form = e.target;
+    const formData = new FormData(form);
+    const formJson = Object.fromEntries(formData.entries());
+    handleStartForm(formJson);
+  }
 
-	function handleStartForm(json) {
-		setQuizzSettings({
-			amountQuestions: json.amountQuestions,
-			category: json.category,
-			difficulty: json.difficulty,
-			questionType: json.questionType,
-		});
-	}
+  function handleStartForm(json) {
+    setQuizzSettings({
+      amountQuestions: json.amountQuestions,
+      category: json.category,
+      difficulty: json.difficulty,
+      questionType: json.questionType,
+    });
+  }
 
-	function beginQuizz() {
-		setQuizzStarted(!quizzStarted);
-	}
+  function beginQuizz() {
+    setQuizzStarted(!quizzStarted);
+    console.log("Quizz");
+  }
 
-	/* Timeout message to be tested */
+  /* Timeout message to be tested */
+  if (!quizzData) {
+    return <h2>Loading...</h2>;
+  }
 
-	return (
-		<>
-			<Header />
-			{quizzData.response_code === 0 ? (
-				<div>
-					{quizzStarted ? (
-						<>
-							<hr />
+  return (
+    <>
+      <Header />
 
-							{quizzData && (
-								<Quizz
-									quizzData={quizzData}
-									amountQuestions={amountQuestions}
-									setQuizz={setQuizz}
-									beginQuizz={beginQuizz}
-								/>
-							)}
-						</>
-					) : (
-						<Home
-							startQuiz={setQuizz}
-							json={JSON.stringify(quizzData, null, 2)}
-						/>
-					)}
-				</div>
-			) : (
-				<div>
-					<p> If server is not working please try refreshing.</p>
-				</div>
-			)}
-			<Footer />
-		</>
-	);
+      <div>
+        {quizzStarted ? (
+          <>
+            <hr />
+
+            {quizzData && (
+              <Quizz
+                quizzData={quizzData}
+                amountQuestions={amountQuestions}
+                setQuizz={setQuizz}
+                beginQuizz={beginQuizz}
+              />
+            )}
+          </>
+        ) : (
+          <Home
+            startQuiz={setQuizz}
+            json={JSON.stringify(quizzData, null, 2)}
+          />
+        )}
+      </div>
+
+      <Footer />
+    </>
+  );
 }
 
 export default App;
