@@ -1,4 +1,4 @@
-import { useState, useEffect /*,  useRef */ } from "react";
+import { useState, useEffect } from "react";
 
 import Home from "./Components/Home";
 /* import Questions from "./Components/Question";
@@ -10,6 +10,7 @@ import Footer from "./Components/Footer";
 
 import "./App.css";
 import "./style/style.css";
+import Loading from "./Components/Loading";
 
 /* Figma Draft */
 /* https://www.figma.com/design/E9S5iPcm10f0RIHK8mCqKL/Quizzical-App?node-id=0-1&node-type=canvas&t=qocSgDNnSXpzHIGr-0 */
@@ -23,6 +24,7 @@ function App() {
 		difficulty: "any-diff",
 		questionType: "multiple",
 	});
+	const [loading, setLoading] = useState(false);
 
 	/* Creating the API link */
 	let amountQuestions = "amount=" + quizzSettings.amountQuestions || "amount=5";
@@ -38,11 +40,9 @@ function App() {
 	let linkFetch = `https://opentdb.com/api.php?${amountQuestions}${category}${difficulty}&type=multiple`;
 	/* console.log(linkFetch); */
 
-	//const lastFetchTimeRef = useRef(0);
-	let timer; // Declare timer variable
-
 	useEffect(() => {
-		async function fetchAPI(linkFetch, timeout = 5000) {
+		setLoading(true);
+		async function fetchAPI(linkFetch, timeout = 3000) {
 			// Create a controller to handle timeout
 			const controller = new AbortController();
 			const timeoutId = setTimeout(() => controller.abort(), timeout);
@@ -97,6 +97,13 @@ function App() {
 
 			if (data !== null && data !== undefined) {
 				setQuizzData(data);
+				setLoading(false);
+			} else {
+				setQuizzData((prevState) => ({
+					...prevState,
+					error: "Failed to fetch data after multiple retries.",
+				}));
+				setLoading(false);
 			}
 		}
 
@@ -139,27 +146,31 @@ function App() {
 		<>
 			<Header />
 
-			<div>
-				{quizzStarted ? (
-					<>
-						<hr />
+			{loading ? (
+				<Loading />
+			) : (
+				<div>
+					{quizzStarted ? (
+						<>
+							<hr />
 
-						{quizzData && (
-							<Quizz
-								quizzData={quizzData}
-								amountQuestions={amountQuestions}
-								setQuizz={setQuizz}
-								beginQuizz={beginQuizz}
-							/>
-						)}
-					</>
-				) : (
-					<Home
-						startQuiz={setQuizz}
-						json={JSON.stringify(quizzData, null, 2)}
-					/>
-				)}
-			</div>
+							{quizzData && (
+								<Quizz
+									quizzData={quizzData}
+									amountQuestions={amountQuestions}
+									setQuizz={setQuizz}
+									beginQuizz={beginQuizz}
+								/>
+							)}
+						</>
+					) : (
+						<Home
+							startQuiz={setQuizz}
+							json={JSON.stringify(quizzData, null, 2)}
+						/>
+					)}
+				</div>
+			)}
 
 			<Footer />
 		</>

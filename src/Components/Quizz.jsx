@@ -33,9 +33,26 @@ export default function Quizz(props) {
 		}
 
 		const processedQuestions = data.results.map((item) => {
-			const questiond = decode(item.question);
-			const correct = decode(item.correct_answer);
-			const incorrect = decode(item.incorrect_answers);
+			let questiond = item.question;
+			let correct = item.correct_answer;
+			let incorrect = item.incorrect_answers;
+
+			// Ensure that the inputs are strings before decoding
+			if (typeof questiond !== "string") {
+				questiond = String(questiond);
+			}
+			if (typeof correct !== "string") {
+				correct = String(correct);
+			}
+			if (Array.isArray(incorrect)) {
+				incorrect = incorrect.map((answer) =>
+					typeof answer === "string" ? answer : String(answer),
+				);
+			}
+
+			questiond = decode(questiond);
+			correct = decode(correct);
+			incorrect = incorrect.map(decode);
 
 			// Make answer options identical for identical answers
 			if (incorrect.filter((answer) => answer === correct).length > 1) {
