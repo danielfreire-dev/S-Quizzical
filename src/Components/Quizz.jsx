@@ -22,10 +22,9 @@ export default function Quizz(props) {
 	/* console.log(selectedAnswers); */
 	/* console.log(processedData); */
 	/* console.log("quizzSubmited: " + quizzSubmited); */
-	console.log(quizzData);
 
 	function processQuizzData(data) {
-		console.log(data); // Log the data to see its structure
+		//console.log(data); // Log the data to see its structure
 
 		if (!data || !data.results) {
 			console.error("Invalid data structure:", data);
@@ -129,22 +128,32 @@ export default function Quizz(props) {
 		beginQuizz();
 	}
 
-	const questionsElement = processedData.map((item) => (
-		<div key={nanoid()} className="question-div">
-			<Questions
-				key={item.question}
-				{...item} // Spread the properties because they align with the props needed
-				handleQuizzChange={handleQuizzChange}
-				selectedAnswer={selectedAnswers[item.question] || ""} // Pass selected answer if available
-				quizzSubmited={quizzSubmited}
-				correctAnswer={item.correctAnswer}
-			/>
+	console.log(processedData);
 
-			<hr />
-		</div>
-	));
+	const questionsElement =
+		processedData.length !== 0 ? (
+			processedData.map((item) => (
+				<div key={nanoid()} className="question-div">
+					<Questions
+						key={item.question}
+						{...item} // Spread the properties because they align with the props needed
+						handleQuizzChange={handleQuizzChange}
+						selectedAnswer={selectedAnswers[item.question] || ""} // Pass selected answer if available
+						quizzSubmited={quizzSubmited}
+						correctAnswer={item.correctAnswer}
+					/>
 
-	/* console.log(processedData); */
+					<hr />
+				</div>
+			))
+		) : (
+			<div className="error-quizz">
+				<h2 className="error-quizz-text">
+					We are having an issue with our servers. Please come back later.
+				</h2>
+				<hr />
+			</div>
+		);
 
 	return (
 		<>

@@ -1,17 +1,16 @@
 _To Do List_
 
-- change fetch method
+- ~~change fetch method~~
 - ~~add category level~~
+- ~~add user settings (amount of questions, difficulty, category)~~
+- ~~add a footer~~
+- ~~add a loading screen~~
 - change Project Name
+- ~~add difficulty level~~
+- ~~add new logo~~
 - add user theme (dark/light)
 - add theme switcher
-- ~~add user settings (amount of questions, difficulty, category)~~
-- ~~add difficulty level~~
 - add celebration when user gets 100% correct answers
-- ~~add new logo~~
-- beautify the quizz creation page
-- ~~add a footer~~
-- add a loading screen
-- add a quiz history page
+- style the quizz creation page
 - a11y
 - fix true/false

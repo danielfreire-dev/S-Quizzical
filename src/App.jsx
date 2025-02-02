@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
 
 import Home from "./Components/Home";
-/* import Questions from "./Components/Question";
-import Answers from "./Components/Answers";
-import Counter from "./Components/AnswersCounter"; */
 import { Header } from "./Components/Header";
 import Quizz from "./Components/Quizz";
 import Footer from "./Components/Footer";
@@ -35,14 +32,15 @@ function App() {
 			? "&difficulty=" + quizzSettings.difficulty
 			: "";
 	/* Fix true/false issue */
+	let questionType = "&type=" + quizzSettings.questionType || "&type=multiple";
 
 	// Define the API endpoint URL
-	let linkFetch = `https://opentdb.com/api.php?${amountQuestions}${category}${difficulty}&type=multiple`;
+	let linkFetch = `https://opentdb.com/api.php?${amountQuestions}${category}${difficulty}${questionType}`;
 	/* console.log(linkFetch); */
 
 	useEffect(() => {
 		setLoading(true);
-		async function fetchAPI(linkFetch, timeout = 3000) {
+		async function fetchAPI(linkFetch, timeout = 5000) {
 			// Create a controller to handle timeout
 			const controller = new AbortController();
 			const timeoutId = setTimeout(() => controller.abort(), timeout);
@@ -63,7 +61,7 @@ function App() {
 
 				const data = await res.json();
 				console.log("Response code:", data.response_code);
-				console.log("Data:", data);
+				/* console.log("Data:", data); */
 
 				// Clear the timeout
 				clearTimeout(timeoutId);
@@ -83,7 +81,7 @@ function App() {
 		async function fetchDataWithRetries() {
 			let data = await fetchAPI(linkFetch);
 			let retries = 0;
-			const maxRetries = 3;
+			const maxRetries = 5;
 
 			while (
 				retries < maxRetries &&

@@ -71,16 +71,7 @@ export default function Home(props) {
 						</option>
 					</select>
 				</div>
-
-				<button type="submit" className="start">
-					Start quiz
-				</button>
-			</form>
-		</>
-	);
-}
-{
-	/* <div className="div-options">
+				<div className="div-options">
 					<label htmlFor="type-select" className="quizz-label">
 						Select Type:
 					</label>
@@ -95,5 +86,12 @@ export default function Home(props) {
 							True / False
 						</option>
 					</select>
-				</div> */
+				</div>
+
+				<button type="submit" className="start">
+					Start quiz
+				</button>
+			</form>
+		</>
+	);
 }
