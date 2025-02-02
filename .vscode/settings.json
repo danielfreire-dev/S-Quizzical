@@ -1,15 +1,16 @@
 {
-	"emmet.includeLanguages": {
-		"javascript": "javascriptreact"
-	},
-	"workbench.experimental.cloudChanges.autoStore": "onShutdown",
-	"html-to-css-autocompletion.autocompletionFilesScope": "multi-root",
-	"html-to-css-autocompletion.getSelectorsFromFileTypes": [
-		"html",
-		"js",
-		"jsx",
-		"ts",
-		"tsx"
-	],
-	"html-to-css-autocompletion.triggerCharacters": true
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "workbench.experimental.cloudChanges.autoStore": "onShutdown",
+  "html-to-css-autocompletion.autocompletionFilesScope": "multi-root",
+  "html-to-css-autocompletion.getSelectorsFromFileTypes": [
+    "html",
+    "js",
+    "jsx",
+    "ts",
+    "tsx"
+  ],
+  "html-to-css-autocompletion.triggerCharacters": true,
+  "cSpell.words": ["questiond", "Quizz", "Submited"]
 }

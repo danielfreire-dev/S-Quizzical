@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { useState, useEffect } from "react";
-import { nanoid } from "nanoid/non-secure";
+import { nanoid } from "nanoid";
 import { decode } from "html-entities";
 import Questions from "./Question";
 import Counter from "./AnswersCounter";
@@ -14,11 +14,24 @@ export default function Quizz(props) {
 
 	const { quizzData, amountQuestions, beginQuizz } = props;
 
+	useEffect(() => {
+		if (quizzData) {
+			processQuizzData(quizzData);
+		}
+	}, [quizzData]); // Run only when quizzData changes
 	/* console.log(selectedAnswers); */
 	/* console.log(processedData); */
 	/* console.log("quizzSubmited: " + quizzSubmited); */
+	console.log(quizzData);
 
 	function processQuizzData(data) {
+		console.log(data); // Log the data to see its structure
+
+		if (!data || !data.results) {
+			console.error("Invalid data structure:", data);
+			return;
+		}
+
 		const processedQuestions = data.results.map((item) => {
 			const questiond = decode(item.question);
 			const correct = decode(item.correct_answer);
@@ -52,12 +65,6 @@ export default function Quizz(props) {
 		setProcessedData(processedQuestions);
 	}
 
-	useEffect(() => {
-		if (quizzData) {
-			processQuizzData(quizzData);
-		}
-	}, [quizzData]); // Run only when quizzData changes
-
 	function handleQuizzChange(question, answer) {
 		setSelectedAnswers({ ...selectedAnswers, [question]: answer });
 	}
@@ -70,30 +77,31 @@ export default function Quizz(props) {
 		const formData = new FormData(form);
 		const formJson = Object.fromEntries(formData.entries());
 		setSelectedAnswers(formJson);
-		/* console.log(formJson); */
-		/* console.log(selectedAnswers); */
 
-		//Check if selected answers are correct
-		processedData.forEach((question) => {
+		// Create a copy of processedData to avoid direct mutation
+		const updatedProcessedData = [...processedData];
+
+		// Check if selected answers are correct
+		updatedProcessedData.forEach((question) => {
 			const selectedAnswer = formJson[question.question];
 
 			if (
 				selectedAnswer ===
 				question.answers.find((answer) => answer.correct).answer
 			) {
-				//update processedData
-				const index = processedData.findIndex(
+				// Update processedData
+				const index = updatedProcessedData.findIndex(
 					(item) => item.question === question.question,
 				);
-				processedData[index].correctAnswer = selectedAnswer;
+				updatedProcessedData[index].correctAnswer = selectedAnswer;
 
 				userScore++;
 			}
-			setCorrectCount(userScore);
 		});
 
 		setCorrectCount(userScore);
 		setQuizzSubmited((prevState) => !prevState);
+		setProcessedData(updatedProcessedData); // Update the state with the new array
 	}
 
 	function newQuizz() {
