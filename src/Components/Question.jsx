@@ -19,13 +19,13 @@ export default function Questions(props) {
 	/* console.log(quizzSubmited); */
 
 	/* Maps per answer */
-	const answerElements = answers.map((answer) => {
+	const answerElements = answers.map((answer, index) => {
 		let answerClass = "";
-
-		/* console.log(correctAnswer); */
-		/* console.log(selectedAnswer); */
-		/* console.log(answer.answer); */
-		/* console.log(answer.checked);*/
+		let indexAnswer = index;
+		/* console.log("correctAnswer: " + correctAnswer); */
+		/* console.log("selectedAnswer: " + selectedAnswer); */
+		/* console.log("answer.answer: " + answer.answer); */
+		/* console.log("answer.checked: " + answer.checked); */
 
 		// Check if quiz is submitted and the selected answer
 		if (quizzSubmited === true) {
@@ -40,6 +40,7 @@ export default function Questions(props) {
 				key={nanoid()}
 				question={question}
 				answer={answer.answer}
+				index={indexAnswer}
 				correctAnswer={correctAnswer}
 				answerClass={answerClass} // Pass the class for styling
 			/>

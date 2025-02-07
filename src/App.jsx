@@ -18,25 +18,30 @@ function App() {
 	const [quizzSettings, setQuizzSettings] = useState({
 		amountQuestions: 5,
 		category: 0,
-		difficulty: "any-diff",
-		questionType: "multiple",
+		difficulty: "",
+		questionType: "",
 	});
 	const [loading, setLoading] = useState(false);
 
 	/* Creating the API link */
 	let amountQuestions = "amount=" + quizzSettings.amountQuestions || "amount=5";
 	let category =
-		quizzSettings.category === 0 ? "" : "&category=" + quizzSettings.category;
+		quizzSettings.category === "0" ? "" : "&category=" + quizzSettings.category;
+
 	let difficulty =
 		quizzSettings.difficulty !== "any-diff"
 			? "&difficulty=" + quizzSettings.difficulty
 			: "";
 	/* Fix true/false issue */
-	let questionType = "&type=" + quizzSettings.questionType || "&type=multiple";
+	let questionType =
+		quizzSettings.questionType !== "any-type"
+			? "&type=" + quizzSettings.questionType
+			: "";
 
+	console.log(quizzSettings);
 	// Define the API endpoint URL
 	let linkFetch = `https://opentdb.com/api.php?${amountQuestions}${category}${difficulty}${questionType}`;
-	/* console.log(linkFetch); */
+	console.log(linkFetch);
 
 	useEffect(() => {
 		setLoading(true);

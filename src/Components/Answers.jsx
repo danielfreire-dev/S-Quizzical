@@ -1,24 +1,17 @@
 /* eslint-disable react/prop-types */
 
-export default function Answers(props) {
-	let {
-		question,
-
-		answer,
-
-		answerClass,
-	} = props;
-
+export default function Answers({ question, index, answer, answerClass }) {
+	let idAnswer = `${answer}_${question}`;
 	return (
 		<>
 			<input
 				type="radio"
 				name={question}
 				value={answer}
-				id={answer}
+				id={idAnswer}
 				className="radio-answer"
 			/>
-			<label htmlFor={answer} className={`answer ${answerClass}`}>
+			<label htmlFor={idAnswer} className={`answer ${answerClass}`}>
 				{answer}
 			</label>
 		</>

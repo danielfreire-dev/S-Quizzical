@@ -94,6 +94,7 @@ export default function Quizz(props) {
 		const formJson = Object.fromEntries(formData.entries());
 		setSelectedAnswers(formJson);
 
+		console.log(selectedAnswers);
 		// Create a copy of processedData to avoid direct mutation
 		const updatedProcessedData = [...processedData];
 
