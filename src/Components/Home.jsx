@@ -89,7 +89,7 @@ export default function Home(props) {
 				</div>
 
 				<button type="submit" className="start">
-					Start quiz
+					start quizz
 				</button>
 			</form>
 		</>

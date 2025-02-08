@@ -19,13 +19,8 @@ export default function Quizz(props) {
 			processQuizzData(quizzData);
 		}
 	}, [quizzData]); // Run only when quizzData changes
-	/* console.log(selectedAnswers); */
-	/* console.log(processedData); */
-	/* console.log("quizzSubmited: " + quizzSubmited); */
 
 	function processQuizzData(data) {
-		//console.log(data); // Log the data to see its structure
-
 		if (!data || !data.results) {
 			console.error("Invalid data structure:", data);
 			return;
@@ -94,7 +89,6 @@ export default function Quizz(props) {
 		const formJson = Object.fromEntries(formData.entries());
 		setSelectedAnswers(formJson);
 
-		console.log(selectedAnswers);
 		// Create a copy of processedData to avoid direct mutation
 		const updatedProcessedData = [...processedData];
 
@@ -123,13 +117,10 @@ export default function Quizz(props) {
 
 	function newQuizz() {
 		setQuizzSubmited(false);
-		/* console.log(quizzSubmited); */
 		setCorrectCount(0);
 		setSelectedAnswers({});
 		beginQuizz();
 	}
-
-	console.log(processedData);
 
 	const questionsElement =
 		processedData.length !== 0 ? (

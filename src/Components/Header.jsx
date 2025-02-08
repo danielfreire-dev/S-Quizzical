@@ -1,10 +1,14 @@
+import logo from "/src/assets/seal-question golden question.svg";
+
 export function Header() {
 	return (
 		<>
 			<header>
-				<h1>Quizzical</h1>
-				<p className="intro-text">This app will quizz your trivia knowledge</p>
-				{/* <p className="intro-text">Are you ready?</p> */}
+				<div className="header-container">
+					<img src={logo} alt="question mark in a ribbon" id="logo-header" />
+					<h1>quizzical</h1>
+				</div>
+				<p className="intro-text">know it all? prove it!</p>
 			</header>
 		</>
 	);

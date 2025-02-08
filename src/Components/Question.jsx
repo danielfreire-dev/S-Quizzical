@@ -16,16 +16,10 @@ export default function Questions(props) {
 		selectedAnswer,
 	} = props;
 
-	/* console.log(quizzSubmited); */
-
 	/* Maps per answer */
 	const answerElements = answers.map((answer, index) => {
 		let answerClass = "";
 		let indexAnswer = index;
-		/* console.log("correctAnswer: " + correctAnswer); */
-		/* console.log("selectedAnswer: " + selectedAnswer); */
-		/* console.log("answer.answer: " + answer.answer); */
-		/* console.log("answer.checked: " + answer.checked); */
 
 		// Check if quiz is submitted and the selected answer
 		if (quizzSubmited === true) {
@@ -52,9 +46,11 @@ export default function Questions(props) {
 			<div className="question-container">
 				<h2 className="question">{question}</h2>
 				<Difficulty difficulty={difficulty} />
+			</div>
+			<div className="answer-container">
+				<div className="answers-list">{answerElements}</div>
 				<Categories key={nanoid()} category={category} />
 			</div>
-			{answerElements}
 		</div>
 	);
 }

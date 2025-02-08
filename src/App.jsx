@@ -9,9 +9,6 @@ import "./App.css";
 import "./style/style.css";
 import Loading from "./Components/Loading";
 
-/* Figma Draft */
-/* https://www.figma.com/design/E9S5iPcm10f0RIHK8mCqKL/Quizzical-App?node-id=0-1&node-type=canvas&t=qocSgDNnSXpzHIGr-0 */
-
 function App() {
 	const [quizzStarted, setQuizzStarted] = useState(false);
 	const [quizzData, setQuizzData] = useState({});
@@ -38,10 +35,8 @@ function App() {
 			? "&type=" + quizzSettings.questionType
 			: "";
 
-	console.log(quizzSettings);
 	// Define the API endpoint URL
 	let linkFetch = `https://opentdb.com/api.php?${amountQuestions}${category}${difficulty}${questionType}`;
-	console.log(linkFetch);
 
 	useEffect(() => {
 		setLoading(true);
@@ -65,8 +60,7 @@ function App() {
 				}
 
 				const data = await res.json();
-				console.log("Response code:", data.response_code);
-				/* console.log("Data:", data); */
+				console.info("Response code:", data.response_code);
 
 				// Clear the timeout
 				clearTimeout(timeoutId);
@@ -93,7 +87,7 @@ function App() {
 				(!data || !data.results || data.results.length === 0)
 			) {
 				retries++;
-				console.log(`Retrying fetch (${retries}/${maxRetries})...`);
+				console.info(`Retrying fetch (${retries}/${maxRetries})...`);
 				await new Promise((resolve) => setTimeout(resolve, 2000)); // Wait for 2 seconds before retrying
 				data = await fetchAPI(linkFetch);
 			}
@@ -112,7 +106,6 @@ function App() {
 
 		fetchDataWithRetries();
 	}, [quizzStarted, linkFetch]);
-	/* console.log(quizzData); */
 
 	function setQuizz(e) {
 		e.preventDefault();

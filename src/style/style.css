@@ -1,30 +1,54 @@
 @media (prefers-color-scheme: light) {
 	:root {
-		--clr-text-main: #4b4b4b;
-		--clr-text-light: #918e9b;
-
-		--clr-background-light: #f5f7fb;
-
-		--clr-btn-default: #4d5b9e;
-		--clr-btn-select: #539ef3;
-		--clr-btn-correct: #94d7a2;
-		--clr-btn-wrong: #f8bcbc;
+		--clr-text-main: rgba(0, 0, 0, 0.87); /* dark grey */
+		--clr-text-light: rgba(158, 158, 158, 1); /* light grey */
+		--clr-text-correct: rgba(0, 128, 0, 1); /* green */
+		--clr-text-wrong: rgba(255, 0, 0, 1); /* red */
+		--clr-background-main: rgba(245, 245, 245, 1); /* light grey */
+		--clr-background-label: rgba(255, 255, 255, 1); /* white */
+		--clr-background-light: rgba(255, 255, 255, 1); /* white */
+		--clr-btn-default: rgba(100, 57, 172, 1); /* given color */
+		--clr-btn-select: rgba(255, 193, 7, 1); /* bright yellow */
+		--clr-btn-correct: rgba(94, 217, 162, 1); /* light green */
+		--clr-btn-wrong: rgba(248, 188, 188, 1); /* light red */
 	}
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--clr-text-main: #888;
-		--clr-text-light: #e5e5e5;
-		--clr-text-correct: #1b365c;
-
-		--clr-background-light: #f5f7fb;
-
-		--clr-btn-default: #4d5b9e;
-		--clr-btn-select: #1581fc;
-		--clr-btn-correct: #94d7a2;
-		--clr-btn-wrong: #f8bcbc;
+		--clr-text-main: rgba(255, 255, 255, 1); /* white */
+		--clr-text-light: rgba(200, 200, 200, 1); /* medium grey */
+		--clr-text-correct: rgba(0, 128, 0, 1); /* green */
+		--clr-text-wrong: rgba(255, 0, 0, 1); /* red */
+		--clr-background-light: rgba(33, 33, 33, 1); /* dark grey */
+		--clr-background-label: rgba(0, 0, 0, 1); /* black */
+		--clr-background-main: rgba(33, 33, 33, 1); /* dark grey */
+		--clr-btn-default: rgba(100, 57, 172, 1); /* given color */
+		--clr-btn-select: rgba(255, 193, 7, 1); /* bright yellow */
+		--clr-btn-correct: rgba(94, 217, 162, 1); /* light green */
+		--clr-btn-wrong: rgba(248, 188, 188, 1); /* light red */
 	}
+}
+
+body {
+	background-color: var(--clr-background-light);
+	color: var(--clr-text-main);
+	transition: background-color 0.3s, color 0.3s;
+}
+
+.header-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.6em;
+	margin-top: 2em;
+	background-color: var(--clr-background-main);
+	color: var(--clr-text-main);
+	transition: background-color 0.3s, color 0.3s;
+}
+
+#logo-header {
+	width: 3em;
 }
 
 .multiple-options {
@@ -76,9 +100,19 @@ input[type="radio"]:checked + label:hover {
 	text-decoration: line-through;
 }
 
+h1 {
+	text-transform: capitalize;
+	margin: 0;
+}
+.intro-text {
+	text-transform: capitalize;
+	margin: 0.5em 0;
+}
+
 hr {
 	margin-top: 2em;
 }
+
 .final-div {
 	display: flex;
 	flex-direction: row;
@@ -98,9 +132,36 @@ hr {
 
 .question-container {
 	display: grid;
-	grid-template-columns: 3fr 1fr;
-
+	grid-template-columns: 10fr 1.5fr;
 	text-align: start;
+}
+
+.start {
+	text-transform: capitalize;
+	margin-top: 1.5em;
+}
+.difficulty {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: flex-end;
+	justify-items: end;
+	text-align: end;
+	text-transform: capitalize;
+}
+
+.answer-container {
+	display: grid;
+	grid-template-columns: 10fr 1fr;
+}
+
+.answers-list {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: center;
+	justify-items: center;
+	text-align: center;
 }
 
 .category {
@@ -111,6 +172,7 @@ hr {
 	justify-items: end;
 	text-align: end;
 	gap: 13px;
+	text-transform: capitalize;
 }
 
 #amountQuestions {
@@ -125,15 +187,23 @@ hr {
 	width: 10em;
 }
 
+#questionType {
+	width: 10em;
+}
+
 .div-options {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
+	column-gap: 0.8em;
+	margin: 1.25em;
 }
+
 .quizz-label {
-	background-color: black;
+	background-color: var(--clr-background-label);
 	color: white;
 }
+
 .quizz-label:hover {
 	background-color: #afadad;
-	color: black;
+	color: var(--clr-background-label);
 }

@@ -1,14 +1,14 @@
-export default function Difficulty(props) {
-	const { difficulty } = props;
+/* eslint-disable react/prop-types */
 
+export default function Difficulty({ difficulty }) {
 	const difficultyMeasure =
 		difficulty === "easy"
-			? "Easy"
+			? "easy 🟢"
 			: difficulty === "medium"
-			? "Medium"
+			? "medium 🟡"
 			: difficulty === "hard"
-			? "Hard"
+			? "hard 🔴"
 			: console.log("Something wrong with difficultyMeasure");
 
-	return <div>{difficultyMeasure}</div>;
+	return <div className="difficulty">{difficultyMeasure}</div>;
 }
