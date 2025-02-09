@@ -1,0 +1,10 @@
+{
+	"cookies": {
+		"title": "Would You Like A Cookie? 🍪",
+		"message": "We value your privacy. Choose which cookies you want to allow. Essential cookies are always enabled as they are necessary for the website to function properly.",
+		"buttonText": "Accept All",
+		"declineButtonText": "Decline All",
+		"manageButtonText": "Manage Cookies",
+		"privacyPolicyText": "Privacy Policy"
+	}
+}

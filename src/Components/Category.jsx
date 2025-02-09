@@ -36,7 +36,7 @@ export default function Categories(props) {
 						return (
 							<div className="category">
 								<p>{category}</p>
-								<Education size={30} />
+								<Education size={42} alt="individual with a graduation cap" />
 							</div>
 						);
 
@@ -44,7 +44,7 @@ export default function Categories(props) {
 						return (
 							<div className="category">
 								<p>{category}</p>
-								<Book size={30} />
+								<Book size={30} alt="book icon" />
 							</div>
 						);
 
@@ -52,7 +52,7 @@ export default function Categories(props) {
 						return (
 							<div className="category">
 								<p>{category}</p>
-								<Video size={30} />
+								<Video size={30} alt="video camera" />
 							</div>
 						);
 
@@ -60,7 +60,7 @@ export default function Categories(props) {
 						return (
 							<div className="category">
 								<p>{category}</p>
-								<Music size={30} />
+								<Music size={30} alt="music note" />
 							</div>
 						);
 
@@ -68,7 +68,7 @@ export default function Categories(props) {
 						return (
 							<div className="category">
 								<p>{category}</p>
-								<Event size={30} />
+								<Event size={48} alt="Billboard with a star" />
 							</div>
 						);
 
@@ -76,7 +76,7 @@ export default function Categories(props) {
 						return (
 							<div className="category">
 								<p>{category}</p>
-								<Screen size={30} />
+								<Screen size={36} alt="television screen" />
 							</div>
 						);
 
@@ -84,7 +84,7 @@ export default function Categories(props) {
 						return (
 							<div className="category">
 								<p>{category}</p>
-								<GameConsole size={30} />
+								<GameConsole size={48} alt="console controller" />
 							</div>
 						);
 
@@ -92,7 +92,7 @@ export default function Categories(props) {
 						return (
 							<div className="category">
 								<p>{category}</p>
-								<BastionHost size={30} />
+								<BastionHost size={30} alt="chess tower" />
 							</div>
 						);
 
@@ -100,7 +100,7 @@ export default function Categories(props) {
 						return (
 							<div className="category">
 								<p>{category}</p>
-								<Mountain size={30} />
+								<Mountain size={42} alt="mountain" />
 							</div>
 						);
 
@@ -108,7 +108,7 @@ export default function Categories(props) {
 						return (
 							<div className="category">
 								<p>{category}</p>
-								<Laptop size={30} />
+								<Laptop size={30} alt="laptop" />
 							</div>
 						);
 
@@ -116,7 +116,7 @@ export default function Categories(props) {
 						return (
 							<div className="category">
 								<p>{category}</p>
-								<Calculation size={30} />
+								<Calculation size={30} alt="mathematical symbols" />
 							</div>
 						);
 
@@ -124,7 +124,7 @@ export default function Categories(props) {
 						return (
 							<div className="category">
 								<p>{category}</p>
-								<Worship size={30} />
+								<Worship size={30} alt="individual praying" />
 							</div>
 						);
 
@@ -132,7 +132,7 @@ export default function Categories(props) {
 						return (
 							<div className="category">
 								<p>{category}</p>
-								<Cyclist size={30} />
+								<Cyclist size={30} alt="individual in a bycicle" />
 							</div>
 						);
 
@@ -140,7 +140,7 @@ export default function Categories(props) {
 						return (
 							<div className="category">
 								<p>{category}</p>
-								<Compass size={30} />
+								<Compass size={30} alt="compass" />
 							</div>
 						);
 
@@ -148,7 +148,7 @@ export default function Categories(props) {
 						return (
 							<div className="category">
 								<p>{category}</p>
-								<Monument size={30} />
+								<Monument size={30} alt="historical monument" />
 							</div>
 						);
 
@@ -156,7 +156,7 @@ export default function Categories(props) {
 						return (
 							<div className="category">
 								<p>{category}</p>
-								<Bullhorn size={30} />
+								<Bullhorn size={30} alt="bullhorn" />
 							</div>
 						);
 
@@ -164,7 +164,7 @@ export default function Categories(props) {
 						return (
 							<div className="category">
 								<p>{category}</p>
-								<ColorPalette size={30} />
+								<ColorPalette size={30} alt="palette" />
 							</div>
 						);
 
@@ -172,7 +172,7 @@ export default function Categories(props) {
 						return (
 							<div className="category">
 								<p>{category}</p>
-								<UserCertification size={30} />
+								<UserCertification size={30} alt="individual with a star" />
 							</div>
 						);
 
@@ -180,7 +180,7 @@ export default function Categories(props) {
 						return (
 							<div className="category">
 								<p>{category}</p>
-								<DogWalker size={30} />
+								<DogWalker size={30} alt="dog walking" />
 							</div>
 						);
 
@@ -188,7 +188,7 @@ export default function Categories(props) {
 						return (
 							<div className="category">
 								<p>{category}</p>
-								<Car size={30} />
+								<Car size={30} alt="car" />
 							</div>
 						);
 
@@ -196,7 +196,7 @@ export default function Categories(props) {
 						return (
 							<div className="category">
 								<p>{category}</p>
-								<Notebook size={30} />
+								<Notebook size={36} alt="comic book" />
 							</div>
 						);
 
@@ -204,7 +204,7 @@ export default function Categories(props) {
 						return (
 							<div className="category">
 								<p>{category}</p>
-								<Tools size={30} />
+								<Tools size={36} alt="wrench" />
 							</div>
 						);
 
@@ -212,7 +212,7 @@ export default function Categories(props) {
 						return (
 							<div className="category">
 								<p>{category}</p>
-								<Notebook size={30} />
+								<Notebook size={56} alt="anime book" />
 							</div>
 						);
 
@@ -220,7 +220,7 @@ export default function Categories(props) {
 						return (
 							<div className="category">
 								<p>{category}</p>
-								<Demo size={30} />
+								<Demo size={30} alt="television with a star" />
 							</div>
 						);
 

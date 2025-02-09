@@ -4,10 +4,16 @@ import Home from "./Components/Home";
 import { Header } from "./Components/Header";
 import Quizz from "./Components/Quizz";
 import Footer from "./Components/Footer";
+import PrivacyPolicy from "./Components/PrivacyPolicy";
 
 import "./App.css";
 import "./style/style.css";
 import Loading from "./Components/Loading";
+
+import "./Analytics/analytics";
+import { CookieManager } from "react-cookie-manager";
+import "react-cookie-manager/style.css";
+import { default as i18next } from "i18next";
 
 function App() {
 	const [quizzStarted, setQuizzStarted] = useState(false);
@@ -19,6 +25,7 @@ function App() {
 		questionType: "",
 	});
 	const [loading, setLoading] = useState(false);
+	const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
 
 	/* Creating the API link */
 	let amountQuestions = "amount=" + quizzSettings.amountQuestions || "amount=5";
@@ -138,37 +145,56 @@ function App() {
 		return <h2>Loading...</h2>;
 	}
 
+	function handleCookiePreferences(preferences) {
+		if (preferences.privacyPolicy) {
+			setShowPrivacyPolicy(true);
+		}
+	}
+
 	return (
 		<>
-			<Header />
+			<CookieManager
+				translations={i18next.t}
+				translationI18NextPrefix="cookies."
+				showManageButton={true}
+				privacyPolicyUrl="https://example.com/privacy"
+				theme="dark"
+				cookieName="cookie-manager"
+				displayType="modal"
+				onAccept={() => handleCookiePreferences({ privacyPolicy: true })}
+				onDecline={() => handleCookiePreferences({ privacyPolicy: false })}
+				onManage={() => handleCookiePreferences({ privacyPolicy: true })}
+			>
+				<Header />
 
-			{loading ? (
-				<Loading />
-			) : (
-				<div>
-					{quizzStarted ? (
-						<>
-							<hr />
+				{loading ? (
+					<Loading />
+				) : (
+					<div>
+						{quizzStarted ? (
+							<>
+								<hr />
 
-							{quizzData && (
-								<Quizz
-									quizzData={quizzData}
-									amountQuestions={amountQuestions}
-									setQuizz={setQuizz}
-									beginQuizz={beginQuizz}
-								/>
-							)}
-						</>
-					) : (
-						<Home
-							startQuiz={setQuizz}
-							json={JSON.stringify(quizzData, null, 2)}
-						/>
-					)}
-				</div>
-			)}
+								{quizzData && (
+									<Quizz
+										quizzData={quizzData}
+										amountQuestions={amountQuestions}
+										setQuizz={setQuizz}
+										beginQuizz={beginQuizz}
+									/>
+								)}
+							</>
+						) : (
+							<Home
+								startQuiz={setQuizz}
+								json={JSON.stringify(quizzData, null, 2)}
+							/>
+						)}
+					</div>
+				)}
 
-			<Footer />
+				<Footer />
+			</CookieManager>
 		</>
 	);
 }

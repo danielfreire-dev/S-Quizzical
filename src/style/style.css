@@ -60,7 +60,7 @@ input[type="radio"].radio-answer {
 	display: none;
 }
 
-label {
+.label {
 	display: inline-block;
 	padding: 0.2em 2em;
 	margin: 0 0.3em;
@@ -79,12 +79,12 @@ label {
 
 /* Clicking a label will select its corresponding hidden radio button
    We can select that radio buttons sibling label and style it. */
-input[type="radio"]:checked + label {
+input[type="radio"]:checked + .label {
 	background: var(--clr-btn-select);
 }
 
-label:hover,
-input[type="radio"]:checked + label:hover {
+.label:hover,
+input[type="radio"]:checked + .label:hover {
 	color: var(--clr-text-light);
 	background: var(--clr-btn-default);
 }
@@ -153,6 +153,15 @@ hr {
 .answer-container {
 	display: grid;
 	grid-template-columns: 10fr 1fr;
+}
+
+.labels-list {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: center;
+	justify-items: center;
+	text-align: center;
 }
 
 .answers-list {

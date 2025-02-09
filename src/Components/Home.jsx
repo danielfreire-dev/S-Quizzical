@@ -5,7 +5,7 @@ export default function Home(props) {
 		<>
 			<form onSubmit={props.startQuiz}>
 				<div className="div-options">
-					<label htmlFor="amountQuestions" className="quizz-label">
+					<label htmlFor="amountQuestions" className="quizz-label label">
 						Number of Questions:{" "}
 					</label>
 					<input
@@ -19,7 +19,7 @@ export default function Home(props) {
 					<small>Maximum questions: 50</small>
 				</div>
 				<div className="div-options">
-					<label htmlFor="category-select" className="quizz-label ">
+					<label htmlFor="category-select" className="quizz-label label">
 						Select Category:
 					</label>
 					<select name="category" id="category-select" defaultValue={"0"}>
@@ -53,7 +53,7 @@ export default function Home(props) {
 					</select>
 				</div>
 				<div className="div-options">
-					<label htmlFor="difficulty-select" className="quizz-label">
+					<label htmlFor="difficulty-select" className="quizz-label label">
 						Select Difficulty:
 					</label>
 					<select name="difficulty" id="difficulty-select">
@@ -72,7 +72,7 @@ export default function Home(props) {
 					</select>
 				</div>
 				<div className="div-options">
-					<label htmlFor="type-select" className="quizz-label">
+					<label htmlFor="type-select" className="quizz-label label">
 						Select Type:
 					</label>
 					<select name="questionType" id="questionType">
