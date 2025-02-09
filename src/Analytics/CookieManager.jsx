@@ -1,4 +1,4 @@
-import useAnalyticsEventTracker from "./useAnalyticsEventTracker";
+import useAnalyticsEventTracker from "./Analytics/useAnalyticsEventTracker";
 
 const CookieManager = () => {
 	const gaEventTracker = useAnalyticsEventTracker("Cookie Manager");
@@ -13,12 +13,12 @@ const CookieManager = () => {
 		gaEventTracker("Delete Cookie", "User deleted a cookie");
 	};
 
-	return (
+	/* return (
 		<div>
 			<button onClick={handleSetCookie}>Set Cookie</button>
 			<button onClick={handleDeleteCookie}>Delete Cookie</button>
 		</div>
-	);
+	); */
 };
 
 export default CookieManager;

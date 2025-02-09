@@ -11,9 +11,10 @@ import "./style/style.css";
 import Loading from "./Components/Loading";
 
 import "./Analytics/analytics";
-import { CookieManager } from "react-cookie-manager";
+import { CookieManager, useCookieConsent } from "react-cookie-manager";
 import "react-cookie-manager/style.css";
 import { default as i18next } from "i18next";
+import useAnalyticsEventTracker from "./Analytics/useAnalyticsEventTracker";
 
 function App() {
 	const [quizzStarted, setQuizzStarted] = useState(false);
@@ -114,6 +115,8 @@ function App() {
 		fetchDataWithRetries();
 	}, [quizzStarted, linkFetch]);
 
+	const gaEventTracker = useAnalyticsEventTracker("Quizz");
+
 	function setQuizz(e) {
 		e.preventDefault();
 
@@ -151,22 +154,45 @@ function App() {
 		}
 	}
 
+	const handleAcceptCookies = () => {
+		// Save the user's preference for accepting all cookies
+		const preferences = {
+			analytics: true,
+			social: true,
+			advertising: true,
+			privacyPolicy: true,
+		};
+
+		// Save the preferences in local storage or a cookie, depending on your implementation
+		localStorage.setItem("cookiePreferences", JSON.stringify(preferences));
+
+		// Update the component's state to reflect the accepted cookies
+		setShowPrivacyPolicy(false);
+
+		// Track the event using the Google Analytics event tracker
+		gaEventTracker("Accept Cookies", "User accepted all cookies");
+	};
+
 	return (
 		<>
 			<CookieManager
 				translations={i18next.t}
 				translationI18NextPrefix="cookies."
 				showManageButton={true}
-				privacyPolicyUrl="https://example.com/privacy"
+				privacyPolicyUrl=""
 				theme="dark"
 				cookieName="cookie-manager"
 				displayType="modal"
-				onAccept={() => handleCookiePreferences({ privacyPolicy: true })}
+				onAccept={() => {
+					handleAcceptCookies;
+				}}
 				onDecline={() => handleCookiePreferences({ privacyPolicy: false })}
 				onManage={() => handleCookiePreferences({ privacyPolicy: true })}
 			>
+				{showPrivacyPolicy ? (
+				<PrivacyPolicy />
+				):(
 				<Header />
-
 				{loading ? (
 					<Loading />
 				) : (
@@ -192,8 +218,7 @@ function App() {
 						)}
 					</div>
 				)}
-
-				<Footer />
+				<Footer />)}
 			</CookieManager>
 		</>
 	);
