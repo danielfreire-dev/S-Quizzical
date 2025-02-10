@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 
 import Home from "./Components/Home";
 import { Header } from "./Components/Header";
 import Quizz from "./Components/Quizz";
 import Footer from "./Components/Footer";
-import PrivacyPolicy from "./Components/PrivacyPolicy";
+/* import PrivacyPolicy from "./Components/PrivacyPolicy"; */
 
 import "./App.css";
 import "./style/style.css";
@@ -173,25 +173,28 @@ function App() {
 		gaEventTracker("Accept Cookies", "User accepted all cookies");
 	};
 
+	const DisplayPrivacyPolicy = lazy(() =>
+		import("./Components/PrivacyPolicy.jsx"),
+	);
 	return (
 		<>
 			<CookieManager
 				translations={i18next.t}
 				translationI18NextPrefix="cookies."
 				showManageButton={true}
-				privacyPolicyUrl=""
+				privacyPolicyUrl={() => setShowPrivacyPolicy(true)}
 				theme="dark"
 				cookieName="cookie-manager"
 				displayType="modal"
-				onAccept={() => {
-					handleAcceptCookies;
-				}}
+				onAccept={() => useAnalyticsEventTracker}
 				onDecline={() => handleCookiePreferences({ privacyPolicy: false })}
 				onManage={() => handleCookiePreferences({ privacyPolicy: true })}
 			>
-				{showPrivacyPolicy ? (
-				<PrivacyPolicy />
-				):(
+				{showPrivacyPolicy && (
+					<Suspense fallback={<div>Loading...</div>}>
+						<DisplayPrivacyPolicy display={showPrivacyPolicy} />
+					</Suspense>
+				)}
 				<Header />
 				{loading ? (
 					<Loading />
@@ -218,7 +221,7 @@ function App() {
 						)}
 					</div>
 				)}
-				<Footer />)}
+				<Footer />
 			</CookieManager>
 		</>
 	);

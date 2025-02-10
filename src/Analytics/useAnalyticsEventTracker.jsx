@@ -1,12 +1,8 @@
-// src/useAnalyticsEventTracker.js
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
-const useAnalyticsEventTracker = (category = "Cookie Manager") => {
+const useAnalyticsEventTracker = (category = "Quiz") => {
 	const eventTracker = (action = "test action", label = "test label") => {
-		const consent = localStorage.getItem("googleAnalyticsConsent") === "true";
-		if (consent) {
-			ReactGA.event({ category, action, label });
-		}
+		ReactGA.event({ category, action, label });
 	};
 	return eventTracker;
 };

@@ -216,3 +216,22 @@ hr {
 	background-color: #afadad;
 	color: var(--clr-background-label);
 }
+
+#privacy-policy {
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	justify-items: center;
+	text-align: center;
+	gap: 13px;
+}
+
+.privacy-policy-displayed {
+	display: block;
+	z-index: 2;
+}
+
+.privacy-policy-hidden {
+	display: none;
+	z-index: 0;
+}

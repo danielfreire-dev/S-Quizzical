@@ -1,8 +1,11 @@
-import React from "react";
+import moduleName from "module";
 
-export default function PrivacyPolicy() {
+export default function PrivacyPolicy({ display, onClose }) {
+	const displayStyle = display
+		? "privacy-policy-displayed"
+		: "privacy-policy-hidden";
 	return (
-		<div>
+		<div id="privacy-policy" className={`${displayStyle}`} lazyload="on">
 			<div>
 				<h1>Privacy Policy</h1>
 				<p>
