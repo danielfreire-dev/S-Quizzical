@@ -217,6 +217,8 @@ hr {
 	color: var(--clr-background-label);
 }
 
+/* Privacy Policy */
+
 #privacy-policy {
 	flex-direction: column;
 	align-items: center;
@@ -226,12 +228,86 @@ hr {
 	gap: 13px;
 }
 
-.privacy-policy-displayed {
-	display: block;
-	z-index: 2;
+.modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.7);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
 }
 
-.privacy-policy-hidden {
-	display: none;
-	z-index: 0;
+.modal-content {
+	background: rgba(0, 0, 0, 0.7);
+	padding: 20px;
+	border-radius: 8px;
+	max-width: 80%;
+	max-height: 80%;
+	overflow-y: auto;
+	position: relative;
+}
+
+.modal-close-button {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background: none;
+	border: none;
+	font-size: 24px;
+	cursor: pointer;
+}
+
+#privacyPolicyBtn {
+	background-color: rgba(0, 0, 0, 0);
+}
+
+/* styles.css */
+@keyframes fadeInFromLeft {
+	0% {
+		opacity: 0;
+		transform: translateX(-100%);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes fadeOutToLeft {
+	0% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	100% {
+		opacity: 0;
+		transform: translateX(-100%);
+	}
+}
+
+.fade-in-from-left {
+	animation: fadeInFromLeft 1s ease-out;
+	-webkit-animation: fadeInFromLeft 1s ease-out;
+}
+
+.fade-out-to-left {
+	animation: fadeOutToLeft 1s ease-out;
+	-webkit-animation: fadeOutToLeft 1s ease-out;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.loading {
+	animation: fadeIn 1s ease-in;
+	-webkit-animation: fadeIn 1s ease-in;
 }

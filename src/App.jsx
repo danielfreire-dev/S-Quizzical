@@ -1,20 +1,19 @@
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useState, useEffect } from "react";
 
 import Home from "./Components/Home";
 import { Header } from "./Components/Header";
 import Quizz from "./Components/Quizz";
 import Footer from "./Components/Footer";
-/* import PrivacyPolicy from "./Components/PrivacyPolicy"; */
 
 import "./App.css";
 import "./style/style.css";
 import Loading from "./Components/Loading";
 
 import "./Analytics/analytics";
-import { CookieManager, useCookieConsent } from "react-cookie-manager";
-import "react-cookie-manager/style.css";
-import { default as i18next } from "i18next";
+import { CookieManager } from "react-cookie-manager";
+import "./style/cookie-banner.css";
 import useAnalyticsEventTracker from "./Analytics/useAnalyticsEventTracker";
+/* import { default as i18next } from "i18next"; */
 
 function App() {
 	const [quizzStarted, setQuizzStarted] = useState(false);
@@ -26,7 +25,7 @@ function App() {
 		questionType: "",
 	});
 	const [loading, setLoading] = useState(false);
-	const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
+	const [acceptCookies, setAcceptCookies] = useState(false);
 
 	/* Creating the API link */
 	let amountQuestions = "amount=" + quizzSettings.amountQuestions || "amount=5";
@@ -115,7 +114,11 @@ function App() {
 		fetchDataWithRetries();
 	}, [quizzStarted, linkFetch]);
 
-	const gaEventTracker = useAnalyticsEventTracker("Quizz");
+	useEffect(() => {
+		if (acceptCookies) {
+			useAnalyticsEventTracker;
+		}
+	}, [acceptCookies]);
 
 	function setQuizz(e) {
 		e.preventDefault();
@@ -148,79 +151,62 @@ function App() {
 		return <h2>Loading...</h2>;
 	}
 
-	function handleCookiePreferences(preferences) {
-		if (preferences.privacyPolicy) {
-			setShowPrivacyPolicy(true);
+	function HandleCookiePreferences(preferences) {
+		if (preferences.Analytics) {
+			setAcceptCookies(true);
+		}
+		if (preferences.Social) {
+			console.log("Social Cookies Activated");
+		}
+		if (preferences.Adverstising) {
+			console.log("Advertising Cookies Activated");
 		}
 	}
 
-	const handleAcceptCookies = () => {
-		// Save the user's preference for accepting all cookies
-		const preferences = {
-			analytics: true,
-			social: true,
-			advertising: true,
-			privacyPolicy: true,
-		};
-
-		// Save the preferences in local storage or a cookie, depending on your implementation
-		localStorage.setItem("cookiePreferences", JSON.stringify(preferences));
-
-		// Update the component's state to reflect the accepted cookies
-		setShowPrivacyPolicy(false);
-
-		// Track the event using the Google Analytics event tracker
-		gaEventTracker("Accept Cookies", "User accepted all cookies");
-	};
-
-	const DisplayPrivacyPolicy = lazy(() =>
-		import("./Components/PrivacyPolicy.jsx"),
-	);
 	return (
 		<>
 			<CookieManager
-				translations={i18next.t}
-				translationI18NextPrefix="cookies."
-				showManageButton={true}
-				privacyPolicyUrl={() => setShowPrivacyPolicy(true)}
+				translations={{
+					title: "Would You Like A Cookie? 🍪",
+					message:
+						"We value your privacy. Choose which cookies, if any,  you want to allow. Essential cookies are always enabled as they are necessary for the website to function properly.",
+				}}
 				theme="dark"
 				cookieName="cookie-manager"
 				displayType="modal"
-				onAccept={() => useAnalyticsEventTracker}
-				onDecline={() => handleCookiePreferences({ privacyPolicy: false })}
-				onManage={() => handleCookiePreferences({ privacyPolicy: true })}
+				showManageButton={true}
+				onAccept={() => setAcceptCookies(true)}
+				onDecline={() => HandleCookiePreferences()}
+				onManage={HandleCookiePreferences}
 			>
-				{showPrivacyPolicy && (
-					<Suspense fallback={<div>Loading...</div>}>
-						<DisplayPrivacyPolicy display={showPrivacyPolicy} />
-					</Suspense>
-				)}
 				<Header />
-				{loading ? (
-					<Loading />
-				) : (
-					<div>
-						{quizzStarted ? (
-							<>
-								<hr />
+				<main>
+					{loading ? (
+						<Loading />
+					) : (
+						<>
+							{quizzStarted ? (
+								<>
+									<hr />
 
-								{quizzData && (
-									<Quizz
-										quizzData={quizzData}
-										amountQuestions={amountQuestions}
-										setQuizz={setQuizz}
-										beginQuizz={beginQuizz}
-									/>
-								)}
-							</>
-						) : (
-							<Home
-								startQuiz={setQuizz}
-								json={JSON.stringify(quizzData, null, 2)}
-							/>
-						)}
-					</div>
-				)}
+									{quizzData && (
+										<Quizz
+											quizzData={quizzData}
+											amountQuestions={amountQuestions}
+											setQuizz={setQuizz}
+											beginQuizz={beginQuizz}
+										/>
+									)}
+								</>
+							) : (
+								<Home
+									startQuiz={setQuizz}
+									json={JSON.stringify(quizzData, null, 2)}
+								/>
+							)}
+						</>
+					)}
+				</main>
 				<Footer />
 			</CookieManager>
 		</>

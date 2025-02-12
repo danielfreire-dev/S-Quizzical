@@ -72,7 +72,7 @@ export default function Home(props) {
 					</select>
 				</div>
 				<div className="div-options">
-					<label htmlFor="type-select" className="quizz-label label">
+					<label htmlFor="questionType" className="quizz-label label">
 						Select Type:
 					</label>
 					<select name="questionType" id="questionType">

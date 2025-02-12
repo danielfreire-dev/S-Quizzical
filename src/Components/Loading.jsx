@@ -8,7 +8,7 @@ export default function Loading() {
 					size={50}
 					thickness={140}
 					speed={80}
-					color="rgba(100, 57, 172, 1)"
+					color="rgba(100, 57, 172, 0.9)"
 				/>
 			</div>
 			<h2 className="loading-title">Loading...</h2>

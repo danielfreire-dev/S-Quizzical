@@ -19,12 +19,17 @@ export default function Questions(props) {
 	/* Maps per answer */
 	const answerElements = answers.map((answer, index) => {
 		let answerClass = "";
-		let indexAnswer = index;
 
-		// Check if quiz is submitted and the selected answer
+		/* Check if quiz is submitted and the selected answer */
+
 		if (quizzSubmited === true) {
+			if (answer.answer === correctAnswer) {
+				/* If the selected answer is correct or wrong */
+				answerClass = "correct";
+			}
 			if (selectedAnswer === answer.answer) {
-				// If the selected answer is correct or wrong
+				/* If the selected answer is correct or wrong */
+
 				answerClass = answer.answer === correctAnswer ? "correct" : "wrong";
 			}
 		}
@@ -34,9 +39,9 @@ export default function Questions(props) {
 				key={nanoid()}
 				question={question}
 				answer={answer.answer}
-				index={indexAnswer}
+				index={index}
 				correctAnswer={correctAnswer}
-				answerClass={answerClass} // Pass the class for styling
+				answerClass={answerClass}
 			/>
 		);
 	});

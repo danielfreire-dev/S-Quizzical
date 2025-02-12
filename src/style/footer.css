@@ -1,9 +1,32 @@
 .footer {
-  max-width: 100%;
-  margin-top: 2rem;
-  /* position: fixed; */
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	max-width: 100%;
+	margin-top: 2rem;
+	/* position: fixed; */
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#privacyPolicyBtn {
+	padding: 8px 16px;
+	font-size: 14px;
+	border: none;
+	background-color: #333;
+	color: white;
+	border-radius: 4px;
+	cursor: pointer;
+}
+/* Privacy Policy component */
+.PrivacyPolicy {
+	display: none;
+}
+@media (min-width: 769px) {
+	.footer {
+		flex-direction: row;
+	}
+}
+@media (max-width: 768px) {
+	.footer {
+		flex-direction: column;
+	}
 }

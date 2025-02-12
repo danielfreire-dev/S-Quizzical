@@ -10,7 +10,7 @@ export default function Quizz(props) {
 	const [correctCount, setCorrectCount] = useState(0);
 	const [quizzSubmited, setQuizzSubmited] = useState(false);
 	const [processedData, setProcessedData] = useState([]);
-	const [selectedAnswers, setSelectedAnswers] = useState({}); // Object to store selected answers
+	const [selectedAnswers, setSelectedAnswers] = useState({});
 
 	const { quizzData, amountQuestions, beginQuizz } = props;
 
@@ -18,7 +18,7 @@ export default function Quizz(props) {
 		if (quizzData) {
 			processQuizzData(quizzData);
 		}
-	}, [quizzData]); // Run only when quizzData changes
+	}, [quizzData]);
 
 	function processQuizzData(data) {
 		if (!data || !data.results) {
@@ -31,7 +31,7 @@ export default function Quizz(props) {
 			let correct = item.correct_answer;
 			let incorrect = item.incorrect_answers;
 
-			// Ensure that the inputs are strings before decoding
+			/* Ensure that the inputs are strings before decoding */
 			if (typeof questiond !== "string") {
 				questiond = String(questiond);
 			}
@@ -48,7 +48,7 @@ export default function Quizz(props) {
 			correct = decode(correct);
 			incorrect = incorrect.map(decode);
 
-			// Make answer options identical for identical answers
+			/* Make answer options identical for identical answers */
 			if (incorrect.filter((answer) => answer === correct).length > 1) {
 				incorrect[0] = correct;
 			}
@@ -68,7 +68,7 @@ export default function Quizz(props) {
 				answers: answers.map((answer) => ({
 					answer,
 					correct: answer === correct,
-					checked: selectedAnswers[questiond] === answer || false, // Set based on user selection
+					checked: selectedAnswers[questiond] === answer || false,
 				})),
 			};
 		});
@@ -89,10 +89,10 @@ export default function Quizz(props) {
 		const formJson = Object.fromEntries(formData.entries());
 		setSelectedAnswers(formJson);
 
-		// Create a copy of processedData to avoid direct mutation
+		/* Create a copy of processedData to avoid direct mutation */
 		const updatedProcessedData = [...processedData];
 
-		// Check if selected answers are correct
+		/* Check if selected answers are correct */
 		updatedProcessedData.forEach((question) => {
 			const selectedAnswer = formJson[question.question];
 
@@ -100,7 +100,7 @@ export default function Quizz(props) {
 				selectedAnswer ===
 				question.answers.find((answer) => answer.correct).answer
 			) {
-				// Update processedData
+				/* Update processedData */
 				const index = updatedProcessedData.findIndex(
 					(item) => item.question === question.question,
 				);
@@ -112,7 +112,7 @@ export default function Quizz(props) {
 
 		setCorrectCount(userScore);
 		setQuizzSubmited((prevState) => !prevState);
-		setProcessedData(updatedProcessedData); // Update the state with the new array
+		setProcessedData(updatedProcessedData);
 	}
 
 	function newQuizz() {
@@ -128,9 +128,9 @@ export default function Quizz(props) {
 				<div key={nanoid()} className="question-div">
 					<Questions
 						key={item.question}
-						{...item} // Spread the properties because they align with the props needed
+						{...item}
 						handleQuizzChange={handleQuizzChange}
-						selectedAnswer={selectedAnswers[item.question] || ""} // Pass selected answer if available
+						selectedAnswer={selectedAnswers[item.question] || ""}
 						quizzSubmited={quizzSubmited}
 						correctAnswer={item.correctAnswer}
 					/>
