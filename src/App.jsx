@@ -158,7 +158,7 @@ function App() {
 		if (preferences.Social) {
 			console.log("Social Cookies Activated");
 		}
-		if (preferences.Adverstising) {
+		if (preferences.Advertising) {
 			console.log("Advertising Cookies Activated");
 		}
 	}

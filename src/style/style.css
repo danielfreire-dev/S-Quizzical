@@ -36,6 +36,9 @@ body {
 	transition: background-color 0.3s, color 0.3s;
 }
 
+::selection {
+	background-color: var(--clr-btn-default);
+}
 .header-container {
 	display: flex;
 	justify-content: center;

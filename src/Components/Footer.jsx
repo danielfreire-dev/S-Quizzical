@@ -8,6 +8,7 @@ export default function Footer() {
 	const handlePrivacyPolicyDisplay = () =>
 		setShowPrivacyPolicy(!showPrivacyPolicy);
 
+	const year = new Date().getFullYear();
 	return (
 		<footer className="footer">
 			<button id="privacyPolicyBtn" onClick={handlePrivacyPolicyDisplay}>
@@ -22,7 +23,7 @@ export default function Footer() {
 				</Suspense>
 			)}
 			<p>
-				2024 © Made with ❓ by
+				{year} © Made with ❓ by
 				<a href="https://danielfreire.pages.dev"> Daniel Freire</a>
 			</p>
 		</footer>
