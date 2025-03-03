@@ -8,7 +8,6 @@ This Quizz app offers 4.000+ questions, and it's still growing.
 
 ![quizzical demo](https://github.com/user-attachments/assets/ad8b2e49-9f28-4250-a745-7fe85199986f)
 
-
 ## How It's Made:
 
 **Tech used:** HTML, CSS, JavaScript, React.js
@@ -28,8 +27,8 @@ This project was designed to be efficient, mantainable and scalable web apps fro
 I learned many lessons whilst working on this project.
 This project started out of a personal passion for Trivia games. I am always looking for ways to use my Web Development knowledge to share my passions with the world, and as soon as I learned about the [Open Trivia Database](https://opentdb.com) I knew I had to build such a project.
 
-## Examples:
+## Other Projects:
 
-Take a look at these couple examples that I have in my own portfolio:
+Take a look at my other projects:
 
-**Quizzical:** https://github.com/danielfreire-dev/PollyGlot
+**PollyGlot:** https://github.com/danielfreire-dev/PollyGlot
