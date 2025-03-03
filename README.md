@@ -6,7 +6,8 @@ This Quizz app offers 4.000+ questions, and it's still growing.
 
 **Link to project:** https://quizzicall-bydainelli.netlify.app
 
-![quizzical demo](https://danielfreire.pages.dev/images/GIFs/quizzical.gif)
+![quizzical demo](https://github.com/user-attachments/assets/ad8b2e49-9f28-4250-a745-7fe85199986f)
+
 
 ## How It's Made:
 
