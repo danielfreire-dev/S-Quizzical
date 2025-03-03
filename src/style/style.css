@@ -1,32 +1,32 @@
 @media (prefers-color-scheme: light) {
 	:root {
-		--clr-text-main: rgba(0, 0, 0, 0.87); /* dark grey */
-		--clr-text-light: rgba(158, 158, 158, 1); /* light grey */
-		--clr-text-correct: rgba(0, 128, 0, 1); /* green */
-		--clr-text-wrong: rgba(255, 0, 0, 1); /* red */
-		--clr-background-main: rgba(245, 245, 245, 1); /* light grey */
-		--clr-background-label: rgba(255, 255, 255, 1); /* white */
-		--clr-background-light: rgba(255, 255, 255, 1); /* white */
-		--clr-btn-default: rgba(100, 57, 172, 1); /* given color */
-		--clr-btn-select: rgba(255, 193, 7, 1); /* bright yellow */
-		--clr-btn-correct: rgba(94, 217, 162, 1); /* light green */
-		--clr-btn-wrong: rgba(248, 188, 188, 1); /* light red */
+		--clr-text-main: rgba(0, 0, 0, 0.87);
+		--clr-text-light: rgba(158, 158, 158, 1);
+		--clr-text-correct: rgba(0, 128, 0, 1);
+		--clr-text-wrong: rgba(255, 0, 0, 1);
+		--clr-background-main: rgba(245, 245, 245, 1);
+		--clr-background-label: rgba(255, 255, 255, 1);
+		--clr-background-light: rgba(255, 255, 255, 1);
+		--clr-btn-default: rgba(100, 57, 172, 1);
+		--clr-btn-select: rgba(255, 193, 7, 1);
+		--clr-btn-correct: rgba(94, 217, 162, 1);
+		--clr-btn-wrong: rgba(248, 188, 188, 1);
 	}
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--clr-text-main: rgba(255, 255, 255, 1); /* white */
-		--clr-text-light: rgba(200, 200, 200, 1); /* medium grey */
-		--clr-text-correct: rgba(0, 128, 0, 1); /* green */
-		--clr-text-wrong: rgba(255, 0, 0, 1); /* red */
-		--clr-background-light: rgba(33, 33, 33, 1); /* dark grey */
-		--clr-background-label: rgba(0, 0, 0, 1); /* black */
-		--clr-background-main: rgba(33, 33, 33, 1); /* dark grey */
-		--clr-btn-default: rgba(100, 57, 172, 1); /* given color */
-		--clr-btn-select: rgba(255, 193, 7, 1); /* bright yellow */
-		--clr-btn-correct: rgba(94, 217, 162, 1); /* light green */
-		--clr-btn-wrong: rgba(248, 188, 188, 1); /* light red */
+		--clr-text-main: rgba(255, 255, 255, 1);
+		--clr-text-light: rgba(200, 200, 200, 1);
+		--clr-text-correct: rgba(0, 128, 0, 1);
+		--clr-text-wrong: rgba(255, 0, 0, 1);
+		--clr-background-light: rgba(33, 33, 33, 1);
+		--clr-background-label: rgba(0, 0, 0, 1);
+		--clr-background-main: rgba(33, 33, 33, 1);
+		--clr-btn-default: rgba(100, 57, 172, 1);
+		--clr-btn-select: rgba(255, 193, 7, 1);
+		--clr-btn-correct: rgba(94, 217, 162, 1);
+		--clr-btn-wrong: rgba(248, 188, 188, 1);
 	}
 }
 
