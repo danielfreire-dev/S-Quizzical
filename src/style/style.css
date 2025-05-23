@@ -212,7 +212,7 @@ hr {
 
 .quizz-label {
 	background-color: var(--clr-background-label);
-	color: var(--clr-text-main: rgba(0, 0, 0, 0.87) ;);
+	color: var(--clr-text-main);
 }
 
 .quizz-label:hover {
