@@ -5,7 +5,7 @@
 		--clr-text-correct: rgba(0, 128, 0, 1);
 		--clr-text-wrong: rgba(255, 0, 0, 1);
 		--clr-background-main: rgba(245, 245, 245, 1);
-		--clr-background-label: rgba(255, 255, 255, 1);
+		--clr-background-label: rgb(153, 119, 212);
 		--clr-background-light: rgba(255, 255, 255, 1);
 		--clr-btn-default: rgba(100, 57, 172, 1);
 		--clr-btn-select: rgba(255, 193, 7, 1);
@@ -45,7 +45,6 @@ body {
 	align-items: center;
 	gap: 0.6em;
 	margin-top: 2em;
-	background-color: var(--clr-background-main);
 	color: var(--clr-text-main);
 	transition: background-color 0.3s, color 0.3s;
 }
@@ -88,7 +87,7 @@ input[type="radio"]:checked + .label {
 
 .label:hover,
 input[type="radio"]:checked + .label:hover {
-	color: var(--clr-text-light);
+	color: var(--clr-background-main);
 	background: var(--clr-btn-default);
 }
 
@@ -130,6 +129,7 @@ hr {
 
 .play-again {
 	background: var(--clr-btn-default);
+	color: var(--clr-background-main);
 	height: 3em;
 }
 
@@ -175,6 +175,10 @@ hr {
 	justify-items: center;
 	text-align: center;
 }
+.answer {
+	background-color: var(--clr-background-label);
+	color: var(--clr-text-main);
+}
 
 .category {
 	display: flex;
@@ -216,8 +220,8 @@ hr {
 }
 
 .quizz-label:hover {
-	background-color: #afadad;
-	color: var(--clr-background-label);
+	background-color: var(--clr-btn-default);
+	color: var(--clr-background-main);
 }
 
 /* Privacy Policy */

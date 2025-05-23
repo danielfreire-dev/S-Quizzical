@@ -42,6 +42,7 @@ export default function Questions(props) {
 				index={index}
 				correctAnswer={correctAnswer}
 				answerClass={answerClass}
+				quizzSubmited={quizzSubmited}
 			/>
 		);
 	});

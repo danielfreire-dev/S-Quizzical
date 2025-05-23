@@ -21,6 +21,8 @@ This project was designed to be efficient, mantainable and scalable web apps fro
   - Even more special celebration if the user answers correctly 50 questions(maximum amount of questions).
 - Keep history of games
 - Make the project WCAG compliant
+- Fix prop-drilling
+  - Redux
 
 ## Lessons Learned:
 

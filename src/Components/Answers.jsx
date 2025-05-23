@@ -1,6 +1,11 @@
 /* eslint-disable react/prop-types */
 
-export default function Answers({ question, answer, answerClass }) {
+export default function Answers({
+	question,
+	answer,
+	answerClass,
+	quizzSubmited,
+}) {
 	let idAnswer = `${answer}_${question}`;
 	return (
 		<>
@@ -10,6 +15,7 @@ export default function Answers({ question, answer, answerClass }) {
 				value={answer}
 				id={idAnswer}
 				className="radio-answer"
+				disabled={quizzSubmited}
 			/>
 			<label htmlFor={idAnswer} className={`answer label ${answerClass}`}>
 				{answer}
