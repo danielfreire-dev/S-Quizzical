@@ -20,7 +20,7 @@
 		--clr-text-light: rgba(200, 200, 200, 1);
 		--clr-text-correct: rgba(0, 128, 0, 1);
 		--clr-text-wrong: rgba(255, 0, 0, 1);
-		--clr-background-light: rgba(33, 33, 33, 1);
+		--clr-background-light: rgba(245, 245, 245, 1);
 		--clr-background-label: rgba(0, 0, 0, 1);
 		--clr-background-main: rgba(33, 33, 33, 1);
 		--clr-btn-default: rgba(100, 57, 172, 1);
@@ -31,7 +31,7 @@
 }
 
 body {
-	background-color: var(--clr-background-light);
+	background-color: var(--clr-background-main);
 	color: var(--clr-text-main);
 	transition: background-color 0.3s, color 0.3s;
 }
@@ -73,7 +73,7 @@ input[type="radio"].radio-answer {
 	-moz-border-radius: 7.94px;
 	-ms-border-radius: 7.94px;
 	-o-border-radius: 7.94px;
-	background: var(--clr-background-light);
+	background: var(--clr-background-main);
 	cursor: pointer;
 	transition: border-color 0.25s;
 	text-align: center;
@@ -87,7 +87,7 @@ input[type="radio"]:checked + .label {
 
 .label:hover,
 input[type="radio"]:checked + .label:hover {
-	color: var(--clr-background-main);
+	color: var(--clr-background-light);
 	background: var(--clr-btn-default);
 }
 
@@ -174,10 +174,6 @@ hr {
 	justify-content: center;
 	justify-items: center;
 	text-align: center;
-}
-.answer {
-	background-color: var(--clr-background-label);
-	color: var(--clr-text-main);
 }
 
 .category {
