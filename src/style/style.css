@@ -129,7 +129,7 @@ hr {
 
 .play-again {
 	background: var(--clr-btn-default);
-	color: var(--clr-background-main);
+	color: var(--clr-background-light);
 	height: 3em;
 }
 
@@ -217,7 +217,7 @@ hr {
 
 .quizz-label:hover {
 	background-color: var(--clr-btn-default);
-	color: var(--clr-background-main);
+	color: var(--clr-background-light);
 }
 
 /* Privacy Policy */
