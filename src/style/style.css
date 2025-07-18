@@ -100,6 +100,7 @@ input[type="radio"]:checked + .label:hover {
 .wrong {
 	background: var(--clr-btn-wrong);
 	text-decoration: line-through;
+	font-style: italic;
 }
 
 h1 {
@@ -313,4 +314,8 @@ hr {
 .loading {
 	animation: fadeIn 1s ease-in;
 	-webkit-animation: fadeIn 1s ease-in;
+}
+
+label.disabled {
+	cursor: not-allowed;
 }

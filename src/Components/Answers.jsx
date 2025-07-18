@@ -7,6 +7,7 @@ export default function Answers({
 	quizzSubmited,
 }) {
 	let idAnswer = `${answer}_${question}`;
+
 	return (
 		<>
 			<input
@@ -17,7 +18,12 @@ export default function Answers({
 				className="radio-answer"
 				disabled={quizzSubmited}
 			/>
-			<label htmlFor={idAnswer} className={`answer label ${answerClass}`}>
+			<label
+				htmlFor={idAnswer}
+				className={`answer label ${answerClass} ${
+					answerClass !== "correct" && quizzSubmited && "disabled"
+				}`}
+			>
 				{answer}
 			</label>
 		</>
