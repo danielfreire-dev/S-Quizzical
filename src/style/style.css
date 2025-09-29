@@ -39,6 +39,7 @@ body {
 ::selection {
 	background-color: var(--clr-btn-default);
 }
+
 .header-container {
 	display: flex;
 	justify-content: center;
