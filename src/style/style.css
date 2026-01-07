@@ -170,15 +170,12 @@ hr {
 }
 
 .answers-list {
-	display: flex;
-	flex-wrap: nowrap;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(calc(50% - 0.5rem), 1fr));
+	gap: 1rem;
 	align-items: center;
-	justify-content: center;
-	justify-items: center;
-	text-align: center;
 }
-
-.category {
+b .category {
 	display: flex;
 	flex-wrap: nowrap;
 	align-items: center;

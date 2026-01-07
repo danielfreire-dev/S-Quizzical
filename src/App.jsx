@@ -13,7 +13,7 @@ import "./Analytics/analytics";
 import { CookieManager } from "react-cookie-manager";
 import "./style/cookie-banner.css";
 import useAnalyticsEventTracker from "./Analytics/useAnalyticsEventTracker";
-/* import { default as i18next } from "i18next"; */
+
 
 function App() {
 	const [quizzStarted, setQuizzStarted] = useState(false);
