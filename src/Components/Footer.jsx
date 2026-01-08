@@ -24,7 +24,10 @@ export default function Footer() {
 			)}
 			<p>
 				{year} © Made with ❓ by
-				<a href="https://daniel-freire.com"> Daniel Freire</a>
+				<a href="https://daniel-freire.com" target="_blank">
+					{" "}
+					Daniel Freire
+				</a>
 			</p>
 		</footer>
 	);
