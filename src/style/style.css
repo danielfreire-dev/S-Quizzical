@@ -1,319 +1,337 @@
 @media (prefers-color-scheme: light) {
-	:root {
-		--clr-text-main: rgba(0, 0, 0, 0.87);
-		--clr-text-light: rgb(90, 90, 90);
-		--clr-text-correct: rgba(0, 128, 0, 1);
-		--clr-text-wrong: rgba(255, 0, 0, 1);
-		--clr-background-main: rgba(245, 245, 245, 1);
-		--clr-background-label: rgb(153, 119, 212);
-		--clr-background-light: rgba(255, 255, 255, 1);
-		--clr-btn-default: rgba(100, 57, 172, 1);
-		--clr-btn-select: rgba(255, 193, 7, 1);
-		--clr-btn-correct: rgba(94, 217, 162, 1);
-		--clr-btn-wrong: rgba(248, 188, 188, 1);
-	}
+  :root {
+    --clr-text-main: rgba(0, 0, 0, 0.87);
+    --clr-text-light: rgb(90, 90, 90);
+    --clr-text-correct: rgba(0, 128, 0, 1);
+    --clr-text-wrong: rgba(255, 0, 0, 1);
+    --clr-background-main: rgba(245, 245, 245, 1);
+    --clr-background-label: rgb(153, 119, 212);
+    --clr-background-light: rgba(255, 255, 255, 1);
+    --clr-btn-default: rgba(100, 57, 172, 1);
+    --clr-btn-select: rgba(255, 193, 7, 1);
+    --clr-btn-correct: rgba(94, 217, 162, 1);
+    --clr-btn-wrong: rgba(248, 188, 188, 1);
+  }
 }
 
 @media (prefers-color-scheme: dark) {
-	:root {
-		--clr-text-main: rgba(255, 255, 255, 1);
-		--clr-text-light: rgba(200, 200, 200, 1);
-		--clr-text-correct: rgba(0, 128, 0, 1);
-		--clr-text-wrong: rgba(255, 0, 0, 1);
-		--clr-background-light: rgba(245, 245, 245, 1);
-		--clr-background-label: rgba(0, 0, 0, 1);
-		--clr-background-main: rgba(33, 33, 33, 1);
-		--clr-btn-default: rgba(100, 57, 172, 1);
-		--clr-btn-select: rgba(255, 193, 7, 1);
-		--clr-btn-correct: rgba(94, 217, 162, 1);
-		--clr-btn-wrong: rgba(248, 188, 188, 1);
-	}
+  :root {
+    --clr-text-main: rgba(255, 255, 255, 1);
+    --clr-text-light: rgba(200, 200, 200, 1);
+    --clr-text-correct: rgba(0, 128, 0, 1);
+    --clr-text-wrong: rgba(255, 0, 0, 1);
+    --clr-background-light: rgba(245, 245, 245, 1);
+    --clr-background-label: rgba(0, 0, 0, 1);
+    --clr-background-main: rgba(33, 33, 33, 1);
+    --clr-btn-default: rgba(100, 57, 172, 1);
+    --clr-btn-select: rgba(255, 193, 7, 1);
+    --clr-btn-correct: rgba(94, 217, 162, 1);
+    --clr-btn-wrong: rgba(248, 188, 188, 1);
+  }
 }
 
 body {
-	background-color: var(--clr-background-main);
-	color: var(--clr-text-main);
-	transition: background-color 0.3s, color 0.3s;
+  background-color: var(--clr-background-main);
+  color: var(--clr-text-main);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 ::selection {
-	background-color: var(--clr-btn-default);
+  background-color: var(--clr-btn-default);
 }
 
 .header-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 0.6em;
-	margin-top: 2em;
-	color: var(--clr-text-main);
-	transition: background-color 0.3s, color 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6em;
+  margin-top: 2em;
+  color: var(--clr-text-main);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 #logo-header {
-	width: 3em;
+  width: 3em;
 }
 
 .multiple-options {
-	display: flex;
-	justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
 input[type="radio"].radio-answer {
-	display: none;
+  display: none;
 }
 
 .label {
-	display: inline-block;
-	padding: 0.2em 2em;
-	margin: 0 0.3em;
-	color: var(--clr-text-main);
-	border: 0.79px solid var(--clr-btn-default);
-	border-radius: 7.94px;
-	-webkit-border-radius: 7.94px;
-	-moz-border-radius: 7.94px;
-	-ms-border-radius: 7.94px;
-	-o-border-radius: 7.94px;
-	background: var(--clr-background-main);
-	cursor: pointer;
-	transition: border-color 0.25s;
-	text-align: center;
+  display: inline-block;
+  padding: 0.2em 2em;
+  margin: 0 0.3em;
+  color: var(--clr-text-main);
+  border: 0.79px solid var(--clr-btn-default);
+  border-radius: 7.94px;
+  -webkit-border-radius: 7.94px;
+  -moz-border-radius: 7.94px;
+  -ms-border-radius: 7.94px;
+  -o-border-radius: 7.94px;
+  background: var(--clr-background-main);
+  cursor: pointer;
+  transition: border-color 0.25s;
+  text-align: center;
 }
 
 /* Clicking a label will select its corresponding hidden radio button
    We can select that radio buttons sibling label and style it. */
 input[type="radio"]:checked + .label {
-	background: var(--clr-btn-select);
+  background: var(--clr-btn-select);
 }
 
 .label:hover,
 input[type="radio"]:checked + .label:hover {
-	color: var(--clr-background-light);
-	background: var(--clr-btn-default);
+  color: var(--clr-background-light);
+  background: var(--clr-btn-default);
 }
 
 .correct {
-	color: var(--clr-text-correct);
-	background: var(--clr-btn-correct);
-	font-weight: bold;
+  color: var(--clr-text-correct);
+  background: var(--clr-btn-correct);
+  font-weight: bold;
 }
 
 .wrong {
-	background: var(--clr-btn-wrong);
-	text-decoration: line-through;
-	font-style: italic;
+  background: var(--clr-btn-wrong);
+  text-decoration: line-through;
+  font-style: italic;
 }
 
 h1 {
-	text-transform: capitalize;
-	margin: 0;
+  text-transform: capitalize;
+  margin: 0;
 }
 .intro-text {
-	text-transform: capitalize;
-	margin: 0.5em 0;
+  text-transform: capitalize;
+  margin: 0.5em 0;
 }
 
 hr {
-	margin-top: 2em;
+  margin-top: 2em;
 }
 
 .final-div {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .final-result {
-	padding: 0 2em;
+  padding: 0 2em;
 }
 
 .play-again {
-	background: var(--clr-btn-default);
-	color: var(--clr-background-light);
-	height: 3em;
+  background: var(--clr-btn-default);
+  color: var(--clr-background-light);
+  height: 3em;
 }
 
 .question-container {
-	display: grid;
-	grid-template-columns: 10fr 1.5fr;
-	text-align: start;
+  display: grid;
+  grid-template-columns: 10fr 1.5fr;
+  text-align: start;
 }
 
 .start {
-	text-transform: capitalize;
-	margin-top: 1.5em;
+  text-transform: capitalize;
+  margin-top: 1.5em;
 }
 .difficulty {
-	display: flex;
-	flex-wrap: nowrap;
-	align-items: center;
-	justify-content: flex-end;
-	justify-items: end;
-	text-align: end;
-	text-transform: capitalize;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  justify-items: end;
+  text-align: end;
+  text-transform: capitalize;
 }
 
 .answer-container {
-	display: grid;
-	grid-template-columns: 10fr 1fr;
+  display: grid;
+  grid-template-columns: 10fr 1fr;
 }
 
 .labels-list {
-	display: flex;
-	flex-wrap: nowrap;
-	align-items: center;
-	justify-content: center;
-	justify-items: center;
-	text-align: center;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.loading-spinner {
+  animation: fadeIn 2s ease-in-out;
+  -webkit-animation: fadeIn 2s ease-in-out;
 }
 
 .answers-list {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(calc(50% - 0.5rem), 1fr));
-	gap: 1rem;
-	align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(calc(50% - 0.5rem), 1fr));
+  gap: 1rem;
+  align-items: center;
 }
 b .category {
-	display: flex;
-	flex-wrap: nowrap;
-	align-items: center;
-	justify-content: flex-end;
-	justify-items: end;
-	text-align: end;
-	gap: 13px;
-	text-transform: capitalize;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  justify-items: end;
+  text-align: end;
+  gap: 13px;
+  text-transform: capitalize;
 }
 
 #amountQuestions {
-	width: 3em;
+  width: 3em;
 }
 
 #category-select {
-	width: 10em;
+  width: 10em;
 }
 
 #difficulty-select {
-	width: 10em;
+  width: 10em;
 }
 
 #questionType {
-	width: 10em;
+  width: 10em;
 }
 
 .div-options {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	column-gap: 0.8em;
-	margin: 1.25em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 0.8em;
+  margin: 1.25em;
 }
 
 .quizz-label {
-	background-color: var(--clr-background-label);
-	color: var(--clr-text-main);
+  background-color: var(--clr-background-label);
+  color: var(--clr-text-main);
 }
 
 .quizz-label:hover {
-	background-color: var(--clr-btn-default);
-	color: var(--clr-background-light);
+  background-color: var(--clr-btn-default);
+  color: var(--clr-background-light);
 }
 
 /* Privacy Policy */
 
 #privacy-policy {
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	justify-items: center;
-	text-align: center;
-	gap: 13px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  gap: 13px;
 }
 
 .modal-overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background: rgba(0, 0, 0, 0.7);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
 .modal-content {
-	background: rgba(0, 0, 0, 0.7);
-	padding: 20px;
-	border-radius: 8px;
-	max-width: 80%;
-	max-height: 80%;
-	overflow-y: auto;
-	position: relative;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 80%;
+  max-height: 80%;
+  overflow-y: auto;
+  position: relative;
 }
 
 .modal-close-button {
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	background: none;
-	border: none;
-	font-size: 24px;
-	cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
 }
 
 #privacyPolicyBtn {
-	background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
 }
 
 /* styles.css */
 @keyframes fadeInFromLeft {
-	0% {
-		opacity: 0;
-		transform: translateX(-100%);
-	}
-	100% {
-		opacity: 1;
-		transform: translateX(0);
-	}
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes fadeOutToLeft {
-	0% {
-		opacity: 1;
-		transform: translateX(0);
-	}
-	100% {
-		opacity: 0;
-		transform: translateX(-100%);
-	}
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
 }
 
 .fade-in-from-left {
-	animation: fadeInFromLeft 1s ease-out;
-	-webkit-animation: fadeInFromLeft 1s ease-out;
+  animation: fadeInFromLeft 1s ease-out;
+  -webkit-animation: fadeInFromLeft 1s ease-out;
 }
 
 .fade-out-to-left {
-	animation: fadeOutToLeft 1s ease-out;
-	-webkit-animation: fadeOutToLeft 1s ease-out;
+  animation: fadeOutToLeft 1s ease-out;
+  -webkit-animation: fadeOutToLeft 1s ease-out;
 }
 
 @keyframes fadeIn {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .loading {
-	animation: fadeIn 1s ease-in;
-	-webkit-animation: fadeIn 1s ease-in;
+  animation: fadeIn 1s ease-in;
+  -webkit-animation: fadeIn 1s ease-in;
 }
 
 label.disabled {
-	cursor: not-allowed;
+  cursor: not-allowed;
 }
